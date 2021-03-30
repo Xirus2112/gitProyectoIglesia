@@ -21,7 +21,7 @@ $result = $stmt->fetchAll();
 <!-- BEGIN: Content-->
     <div class="app-content content">
         <div class="content-wrapper">
-            <!-- <div class="content-header row mb-1">
+            <div class="content-header row mb-1">
                 <div class="content-header-left col-md-6 col-12 mb-2">
                     <h3 class="content-header-title">Manage</h3>
                     <div class="row breadcrumbs-top">
@@ -37,79 +37,79 @@ $result = $stmt->fetchAll();
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
             <div class="content-body">
-                <section>
+                <!-- DOM - jQuery events table -->
+                <section id="dom">
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header">
-                                    <div class="row">
-                                         <div class="col align-self-start">
-                                            <h4 class="card-title"><a href="addcustomer.php" class="btn btn-info btn-sm">Añadir Persona<i class="fas fa-user-plus ml-1"></i></a></h4>
-                                        </div>
-                                        <div class="col align-self-end">
-                                            <div class="btn-group" role="group" arial-label="Grupo de botones">
-                                                <button type="button" class="btn btn-outline-info btn-sm">Boton 1</button>
-                                                <button type="button" class="btn btn-outline-info btn-sm">Boton 2 </button>
-                                                <button type="button" class="btn btn-outline-info btn-sm">Boton 3 </button>
-                                            </div>
+                                <div class="card-header">                                    
+                                    <h4 class="card-title"><a href="addcustomer.php" class="btn btn-primary "><i class="la la-plus"></i>Añadir Cliente</a></h4>
+                                    <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                                    <div class="heading-elements">
+                                        <ul class="list-inline mb-0">
+                                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card-content collapse show">
+                                    <div class="card-body card-dashboard dataTables_wrapper dt-bootstrap">                                        
+                                        <?php require_once('../assets/constants/check-reply.php') ;?>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered dom-jQuery-events">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Foto</th>
+                                                        <th>Nombre</th>
+                                                        <th>Correo</th>
+                                                        <th>Tfno Móvil</th>
+                                                        <th>Tfno Fijo</th>
+                                                        <th>Dirección</th>
+                                                        <th>Ciudad</th>
+                                                        <th>Cargo</th>
+                                                        <th>Estado</th>
+                                                        <th>Acción</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php 
+                                                    $i=1;
+                                                    foreach ($result as $value) { 
+                                                        $nombreApe= $value['nombre'] . " " . $value['apellidoPaterno'] . " " . $value['apellidoMaterno'];
+                                                        $direccion= "Calle " . $value['calle'] . " #" . $value['carrera'] . " - " . $value['casaNumero'];
+                                                        ?>
+                                                    
+                                                    <tr>
+                                                        <td><?=$i?></td>
+                                                        <td><?=$nombreApe?></td>
+                                                        <td><?=$value['email']?></td>
+                                                        <td><?=$value['telefonoMovil']?></td>
+                                                        <td><?=$value['telefonoFijo']?></td>
+                                                        <td><?=$direccion?></td>
+                                                        <td><?=$value['municipio']?></td>
+                                                        <td><?=$value['tipoPersona']?></td>
+                                                        <td><?=$value['estado']?></td>
+                                                        <td>
+                                                            <a title="Edit" href="editcustomer.php?id=<?=$value['id']?>" class="btn btn-icon btn-primary mr-1 mb-1"><i class="la la-edit"></i></a>
+                                                            <button type="button" class="btn btn-icon btn-danger mr-1 mb-1 cancel-button" id="<?=$value['id']?>"><i class="la la-trash"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                <?php $i++; } ?>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
-                                    <div class="row">
-
-                                    </div>                                   
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-            </div>
-            
-            <div class="content">
-                <div class="card col-sm-3" >
-                           
-                        <div class="card-header mt-1"  style="background:#f8f8f9;">
-                        <?php foreach ($result as $filas){ 
-                            $nombreApe= $filas['nombre'] . " " . $filas['apellidoPaterno'] . " " . $filas['apellidoMaterno'];
-                            $avatar=$filas['avator']; 
-                            $whatsapp =  $filas['telefonoMovil']
-                            ?> 
-                                <?php
-                                if ($avatar == null) { ?>
-                                <img src="../assets/admin/images/portrait/small/avatar.jpg" alt="avatar"  class="rounded-circle mx-auto d-block img-fluid" width="200" height="200">
-
-                                <?php }else{
-                                    print ' <img  id="blah" class="rounded-circle mx-auto d-block img-fluid"  src="../assets/uploads/avatar/'.$avatar.'" id="userDropdown" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  width="200" height="200">'; }
-                                ?>
-                            <div>
-                                <span class="badge badge-pill badge-info">
-                                    <?php echo $filas['tipoPersona'];?>
-                                </span>
-                                <span class="badge badge-pill badge-success">
-                                    <?php echo $filas['estado'];?>
-                                </span>
-                            </div>    
-                        </div>
-                        <div class="card-body">
-                            <a href="#" class="card-title"><strong><?php echo $nombreApe;?></strong></a><br>
-                            <small><i class="fas fa-map-marker-alt">&nbsp;</i><?php echo $filas['calle'];?>,Num: <?php echo $filas['carrera'];?>,<br>
-                            <small><?php echo $filas['departamento'];?>, <?php echo $filas['municipio'];?></small><br>
-                            <small><i class="far fa-envelope">&nbsp;</i><?php echo $filas['email'];?></small><br>
-                            <small><a href="https://api.whatsapp.com/send?phone=&text=Hola, quisiera conversar contigo &#128513;" target="_blank"><i class="fab fa-whatsapp">&nbsp;</i><?php echo $whatsapp;?></a></small><br>
-                            <button type="button" class="btn btn-outline-info btn-sm"><i class="far fa-address-card mr-1"></i>Credenciales</button>
-                            <button type="button" class="btn btn-outline-danger btn-sm"><i class="fas fa-user-minus mr-1"></i>Eliminar</button>
-                            
-                        </div>
-                    <?php } ;?>
-                    </div> 
-                </div>
+                <!-- DOM - jQuery events table -->
             </div>
         </div>
     </div>
-
-<!-- END: Content-->
- 
+    <!-- END: Content-->
 <?php include 'footer.php'; ?>
 <script>
     $(document).ready(function(){

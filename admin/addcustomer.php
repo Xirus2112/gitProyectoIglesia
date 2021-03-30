@@ -38,42 +38,50 @@ include('header.php');
                                 <div class="card-content collapse show">
                                     <div class="card-body">
                                         <form class="form-horizontal" action="app/customers.php" method="post" enctype="multipart/form-data" novalidate>
-                                            <div class="row row-cols-4">
-                                                <div class="col ">                                                    
-                                                    <h5>Foto <span class="required">*</span></h5>
+                                            
+                                            <!-- <div class="row row-cols-12">
+                                                <div class="col ">
                                                     <div class="text-center">
                                                         <?php
                                                             if ($myvataor == null) { ?>
-                                                            <img src="../assets/admin/images/portrait/small/avatar.jpg" alt="avatar" class="rounded float-left rounded-circle" style="border: 1px solid black;  border-radius:50px; width:150px; height:150px;">
-
+                                                            <img src="../assets/admin/images/portrait/small/avatar.jpg" alt="avatar" class="rounded float-left rounded-circle" style="border: 1px solid black;  border-radius:50px; width:50px; height:50px;">
                                                             <?php }else{
-
-                                                            print ' <img  id="blah" style="border: 1px solid black;  border-radius:5px; width:150px; height:150px;" class="rounded float-center rounded-circle"  src="../assets/uploads/avatar/'.$myvataor.'" id="userDropdown" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><br><br>'; }
+                                                            print ' <img  id="blah" style="border: 1px solid black;  border-radius:5px; width:50px; height:50px;" class="rounded float-center rounded-circle"  src="../assets/uploads/avatar/'.$myvataor.'" id="userDropdown" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><br><br>'; }
                                                         ?>
                                                         <input type="file"  onchange="readURL(this);" name="image" accept="image/*" required data-validation-required-message="Password is required">
-                                                        <!-- <img src="../assets/admin/images/portrait/small/avatar.jpg" alt="Imagen de avatar" class="rounded float-left rounded-circle" style="border: 1px solid black;  border-radius:5px; width:150px; height:150px;"> -->
-                                                    </div>
-                                                </div>    
-                                                <div class="col">
-                                                    <h5>Customer name <span class="required">*</span></h5>
-                                                    <div class="controls">
-                                                        <input type="text" name="name" class="form-control mb-1" required data-validation-required-message="Hola name is required">
+                                                        <!-- <img src="../assets/admin/images/portrait/small/avatar.jpg" alt="Imagen de avatar" class="rounded float-left rounded-circle" style="border: 1px solid black;  border-radius:5px; width:150px; height:150px;"> ------
                                                     </div>
                                                 </div>
-                                                <div class="col">
-                                                    <h5>Address <span class="required">*</span></h5>
-                                                    <div class="controls">
-                                                        <input type="text" name="address" class="form-control mb-1" required data-validation-required-message="Address is required">
+                                            </div> -->
+                                            <fieldset>
+                                                <legend>Datos Esenciales</legend>   
+                                                <div class="row row-cols-4">
+                                                    <div class="col form-group">
+                                                        <h5>Nombre <span class="required">*</span></h5>
+                                                        <div class="controls">
+                                                            <input type="text" name="nombre" class="form-control mb-1" required data-validation-required-message="Ingresa el Nombre" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col form-group">
+                                                        <h5>Apellido Paterno <span class="required">*</span></h5>
+                                                        <div class="controls">
+                                                            <input type="text" name="apellidoPaterno" class="form-control mb-1" required data-validation-required-message="Ingresa tu Apellido Paterno" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col form-group">
+                                                        <h5>Apellido Materno <span class="required">*</span></h5>
+                                                        <div class="controls">
+                                                            <input type="text" name="apellidoMaterno" class="form-control mb-1" required data-validation-required-message="Ingresa tu Apellido Materno" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col form-group">
+                                                        <h5>E-mail <span>*</span></h5>
+                                                        <div class="controls">
+                                                            <input type="email" name="email" class="form-control" required data-validation-required-message="Ingresa tu Correo">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="col">
-                                                    <h5>Telephone <span class="required">*</span></h5>
-                                                    <div class="controls">
-                                                        <input type="text" name="telephone" class="form-control mb-1" required data-validation-required-message="Telephone is required">
-                                                    </div>
-                                                </div>
-                                                </div>
-                                            </div>
+                                            
                                             <div class="row">
                                                 <div class="col-lg-6 col-md-12">
                                                     <div class="form-group">
@@ -117,7 +125,6 @@ include('header.php');
             $('#blah')
             .attr('src', e.target.result);
             };
-
             reader.readAsDataURL(input.files[0]);
         }
     }
