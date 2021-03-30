@@ -76,12 +76,18 @@ $result = $stmt->fetchAll();
                                                     <?php 
                                                     $i=1;
                                                     foreach ($result as $value) { 
+                                                        $avatar=$value['avator']; 
                                                         $nombreApe= $value['nombre'] . " " . $value['apellidoPaterno'] . " " . $value['apellidoMaterno'];
                                                         $direccion= "Calle " . $value['calle'] . " #" . $value['carrera'] . " - " . $value['casaNumero'];
                                                         ?>
-                                                    
+                                                        
                                                     <tr>
-                                                        <td><?=$i?></td>
+                                                        <td><?php
+                                                            if ($avatar == null) { ?>
+                                                                <img src="../assets/admin/images/portrait/small/avatar.jpg" alt="avatar"  class="rounded-circle mx-auto d-block img-fluid" width="175" height="175">
+                                                            <?php }else{
+                                                                print ' <img  id="blah" class="rounded-circle mx-auto d-block img-fluid"  src="../assets/uploads/avatar/'.$avatar.'" id="userDropdown" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" width="175" height="175">'; }
+                                                            ?></td>
                                                         <td><?=$nombreApe?></td>
                                                         <td><?=$value['email']?></td>
                                                         <td><?=$value['telefonoMovil']?></td>
