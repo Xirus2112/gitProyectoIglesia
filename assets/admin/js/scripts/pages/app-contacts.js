@@ -19,7 +19,7 @@ $(document).ready(function() {
     }
 
     var userDataTable = $('#users-contacts').DataTable({
-        'order' : [[1,'']]
+        'order' : [[1,'']],
     });
     // Set the search textbox functionality in sidebar
     $('#search-contacts').on( 'keyup', function () {

@@ -9,15 +9,67 @@
 ==========================================================================================*/
 
 $(document).ready(function() {
-
+    
     /***************************************
      *       js of dom jQuery events        *
      ***************************************/
 
-    var eventsTable = $('.dom-jQuery-events').DataTable();
+    var eventsTable = $('.dom-jQuery-events').DataTable();   
 
-    $('.dom-jQuery-events').DataTable({
-        language:{
+    $('.dom-jQuery-events tbody').on('click', 'tr', function() {
+        var data = eventsTable.row(this).data();
+        //alert('You clicked on ' + data[0] + '\'s row');
+
+    });
+
+
+    /***************************************
+     *        js of column rendering        *
+     ***************************************/
+
+    $('.column-rendering').DataTable({
+        "columnDefs": [{
+            // The `data` parameter refers to the data for the cell (defined by the
+            // `data` option, which defaults to the column being worked with, in
+            // this case `data: 0`.
+            "render": function(data, type, row) {
+                return data + ' (' + row[3] + ')';
+            },
+            "targets": 0
+        }, {
+            "visible": false,
+            "targets": [3]
+        }]
+    });
+
+    /******************************************************
+     *        js of multiple table control elements        *
+     ******************************************************/
+
+
+    $('.multiple-control-elements').DataTable({
+        "dom": '<"top"iflp<"clear">>rt<"bottom"iflp<"clear">>'
+    });
+
+
+
+    /*************************************************************
+     *        js of Complex headers with column visibility        *
+     *************************************************************/
+
+    $('.column-visibility').DataTable({
+        "columnDefs": [{
+            "visible": false,
+            "targets": -1
+        }]
+    });
+
+    /************************************
+     *        js of Language file        *
+     ************************************/
+
+    $('.language').DataTable({
+        "language":{
             "processing": "Procesando...",
             "lengthMenu": "Mostrar _MENU_ registros",
             "zeroRecords": "No se encontraron resultados",
@@ -195,64 +247,6 @@ $(document).ready(function() {
                 }
             },
             "info": "Mostrando de _START_ a _END_ de _TOTAL_ entradas"
-        }
-    });
-
-    $('.dom-jQuery-events tbody').on('click', 'tr', function() {
-        var data = eventsTable.row(this).data();
-        //alert('You clicked on ' + data[0] + '\'s row');
-
-    });
-
-
-    /***************************************
-     *        js of column rendering        *
-     ***************************************/
-
-    $('.column-rendering').DataTable({
-        "columnDefs": [{
-            // The `data` parameter refers to the data for the cell (defined by the
-            // `data` option, which defaults to the column being worked with, in
-            // this case `data: 0`.
-            "render": function(data, type, row) {
-                return data + ' (' + row[3] + ')';
-            },
-            "targets": 0
-        }, {
-            "visible": false,
-            "targets": [3]
-        }]
-    });
-
-    /******************************************************
-     *        js of multiple table control elements        *
-     ******************************************************/
-
-
-    $('.multiple-control-elements').DataTable({
-        "dom": '<"top"iflp<"clear">>rt<"bottom"iflp<"clear">>'
-    });
-
-
-
-    /*************************************************************
-     *        js of Complex headers with column visibility        *
-     *************************************************************/
-
-    $('.column-visibility').DataTable({
-        "columnDefs": [{
-            "visible": false,
-            "targets": -1
-        }]
-    });
-
-    /************************************
-     *        js of Language file        *
-     ************************************/
-
-    $('.language').DataTable({
-        "language": {
-            "url": "cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"
         }
     });
 
