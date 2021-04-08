@@ -23,16 +23,16 @@ $result = $stmt->fetchAll();
         <div class="content-wrapper">
             <div class="content-header row mb-1">
                 <div class="content-header-left col-md-6 col-12 mb-2">
-                    <h3 class="content-header-title">Manage</h3>
+                    <h3 class="content-header-title">Personas</h3>
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.php">Home</a>
+                                <li class="breadcrumb-item"><a href="index.php">Inicio</a>
                                 </li>
-                                <li class="breadcrumb-item"><a href="#">Medicinals</a>
-                                </li>
+                                <li class="breadcrumb-item"><a href="customers.php">Personas</a>
+                                <!-- </li>
                                 <li class="breadcrumb-item active">Manage
-                                </li>
+                                </li> -->
                             </ol>
                         </div>
                     </div>
@@ -44,15 +44,26 @@ $result = $stmt->fetchAll();
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header">                                    
-                                    <h4 class="card-title"><a href="addcustomer.php" class="btn btn-primary "><i class="la la-plus"></i>Añadir Cliente</a></h4>
+                                <div class="card-header">
+                                    <a href="addcustomer.php" class="btn btn-danger "><i class="la la-plus"></i>Añadir Cliente</a>
+                                
+                                    <a href="pdf.php" target="_blank" class="btn btn-success mt-5"><i class="fas fa-file-pdf "></i> PDF</a>
+
+                                    <a href="excel.php" target="_blank" class="btn btn-danger"><i class="far fa-file-excel"></i> Excel</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card">
+                                <!-- <div class="card-header">                                    
+                                    
                                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
                                             <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
                                         </ul>
-                                    </div>
-                                </div>
+                                    </div
+                                </div>> -->
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard dataTables_wrapper dt-bootstrap">                                        
                                         <?php require_once('../assets/constants/check-reply.php') ;?>
