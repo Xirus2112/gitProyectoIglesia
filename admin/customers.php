@@ -38,11 +38,22 @@ $result = $stmt->fetchAll();
                     </div>
                 </div>
             </div>
+            <div class="container-fluid">
+                <div class="row ">
+                    <div class="card col-12">
+                        <div class="card-header">
+                            <a href="addcustomer.php" class="btn btn-danger "><i class="la la-plus"></i>Añadir Cliente</a>
+                            <a href="pdf.php" target="_blank" class="btn btn-success "><i class="fas fa-file-pdf "></i> PDF</a>
+                            <a href="excel.php" target="_blank" class="btn btn-danger"><i class="far fa-file-excel"></i> Excel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="content-body">
                 <!-- DOM - jQuery events table -->
                 <section id="dom">
                     <div class="row">
-                        <div class="col-12">
+                        <!-- <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
                                     <a href="addcustomer.php" class="btn btn-danger "><i class="la la-plus"></i>Añadir Cliente</a>
@@ -52,7 +63,7 @@ $result = $stmt->fetchAll();
                                     <a href="excel.php" target="_blank" class="btn btn-danger"><i class="far fa-file-excel"></i> Excel</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-12">
                             <div class="card">
                                 <!-- <div class="card-header">                                    
