@@ -5,7 +5,7 @@ include('header.php');
 
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$stmt = $conn->prepare("SELECT dp.id,dp.nombre,dp.apellidoPaterno,dp.apellidoMaterno,dp.email,dp.role,dp.telefonoMovil,dp.telefonoFijo,dp.calle,dp.carrera,dp.casaNumero,de.departamento AS departamento,mu.municipio AS municipio,dp.codPostal,tp.nombre AS tipoPersona,cs.nombre AS clasificacionSocial,ec.nombre AS estadoCivil,ge.nombre AS genero,dp.fechaNacimiento,ep.nombre AS estado,dp.lugarNacimiento,dp.nacionalidad,dp.documentoIdentidad,dp.miembroDesde,dp.fechaConversionCristiana,dp.nombreIglesiaConversion,dp.bautizado,dp.iglesiaAnterior,dp.profesionTrabajo,dp.lugarTrabajo,dp.direccionTrabajo,dp.telefonoTrabajo,dp.avator
+$stmt = $conn->prepare("SELECT dp.id,dp.nombre,dp.apellidoPaterno,dp.apellidoMaterno,dp.email,dp.role,dp.telefonoMovil,dp.telefonoFijo,dp.calle,dp.carrera,dp.casaNumero,de.departamento AS departamento,mu.municipio AS municipio,dp.codPostal,tp.nombre AS tipoPersona,cs.nombre AS clasificacionSocial,ec.nombre AS estadoCivil,ge.nombre AS genero,dp.fechaNacimiento,ep.nombre AS estado,dp.lugarNacimiento,dp.nacionalidad,dp.documentoIdentidad,dp.miembroDesde,dp.fechaConversionCristiana,dp.nombreIglesiaConversion,dp.bautizado,dp.iglesiaAnterior,dp.profesionTrabajo,dp.lugarTrabajo,dp.direccionTrabajo,dp.telefonoTrabajo,dp.avator,ep.idEstado
     FROM administradoriglesia.datospersonas dp 
 	INNER JOIN administradoriglesia.departamentos de ON dp.idDepartamento=de.id_departamento
 	INNER JOIN administradoriglesia.estadocivil ec ON dp.IdEstadoCivil=ec.idEstadoCivil
@@ -40,11 +40,20 @@ $result = $stmt->fetchAll();
             </div>
             <div class="container-fluid">
                 <div class="row ">
-                    <div class="card col-12">
+                    <div class="card col-sm-12">
                         <div class="card-header">
-                            <a href="addcustomer.php" class="btn btn-danger "><i class="la la-plus"></i>Añadir Cliente</a>
-                            <a href="pdf.php" target="_blank" class="btn btn-success "><i class="fas fa-file-pdf "></i> PDF</a>
-                            <a href="excel.php" target="_blank" class="btn btn-danger"><i class="far fa-file-excel"></i> Excel</a>
+                            <a href="addcustomer.php" class="btn btn-info btn-sm">Añadir Cliente <i class="fas fa-user-plus"></i></a>
+                            <div class="btn-group pull-right">
+                                <a href="index.php" ><button type="button" class="btn btn-info btn-sm "><i class="fas fa-user-cog"></i> Administrar Usuario</button></a>
+                                <button type="button" class="btn btn-info btn-sm"><i class="fas fa-chart-line"></i> Reportes</button>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown">Exportar</button>
+                                    <div class="dropdown-menu">
+                                        <a href="pdf.php" target="_blank" class="dropdown-item"><i class="fas fa-file-pdf "></i> PDF</a>
+                                        <a href="excel.php" target="_blank" class="dropdown-item"><i class="far fa-file-excel"></i> Excel</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -58,7 +67,7 @@ $result = $stmt->fetchAll();
                                 <div class="card-header">
                                     <a href="addcustomer.php" class="btn btn-danger "><i class="la la-plus"></i>Añadir Cliente</a>
                                 
-                                    <a href="pdf.php" target="_blank" class="btn btn-success mt-5"><i class="fas fa-file-pdf "></i> PDF</a>
+                                    
 
                                     <a href="excel.php" target="_blank" class="btn btn-danger"><i class="far fa-file-excel"></i> Excel</a>
                                 </div>
@@ -101,6 +110,8 @@ $result = $stmt->fetchAll();
                                                         $avatar=$value['avator']; 
                                                         $nombreApe= $value['nombre'] . " " . $value['apellidoPaterno'] . " " . $value['apellidoMaterno'];
                                                         $direccion= "Calle " . $value['calle'] . " #" . $value['carrera'] . " - " . $value['casaNumero'];
+                                                        $idEstado = $value['idEstado'];
+                                                        $estado= $value['estado'];
                                                         ?>
                                                         
                                                     <tr>
@@ -117,10 +128,15 @@ $result = $stmt->fetchAll();
                                                         <td><?=$direccion?></td>
                                                         <td><?=$value['municipio']?></td>
                                                         <td><?=$value['tipoPersona']?></td>
-                                                        <td><?=$value['estado']?></td>
+                                                        <td><?php if ($idEstado=='1'):?>
+                                                                <span class="badge bg-success">Activo</span>
+                                                            <?php else :?>
+                                                                <span class="badge bg-danger">Inactivo</span>
+                                                            <?php endif;?>
+                                                        </td>
                                                         <td>
-                                                            <a title="Edit" href="editcustomer.php?id=<?=$value['id']?>" class="btn btn-icon btn-primary mr-1 mb-1"><i class="la la-edit"></i></a>
-                                                            <button type="button" class="btn btn-icon btn-danger mr-1 mb-1 cancel-button" id="<?=$value['id']?>"><i class="la la-trash"></i></button>
+                                                            <a title="Editar" href="editcustomer.php?id=<?=$value['id']?>" class="btn btn-icon btn-primary mr-1 mb-1"><i class="la la-edit"></i></a>
+                                                            <button type="button" class="btn btn-icon btn-danger mr-1 mb-1 cancel-button" id="<?=$value['id']?>" title="Eliminar"><i class="la la-trash"></i></button>
                                                         </td>
                                                     </tr>
                                                 <?php $i++; } ?>

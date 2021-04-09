@@ -149,7 +149,7 @@ try
                 <li class="nav-item"><a class="dropdown-toggle nav-link" href="customers.php"><i class="fas fa-user-friends" style="font-size: 18px;"></i><span>Personas</span></a></li>
                 <li class="nav-item"><a class="dropdown-toggle nav-link" href="users.php"><i class="fas fa-user-tie" style="font-size: 18px;"></i><span>Usuarios</span></a>
                 </li>
-                <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="" data-toggle="dropdown"><i class="fas fa-file-contract" style="font-size: 18px;"></i><span>Reportes</span></a>
+                <!-- <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="" data-toggle="dropdown"><i class="fas fa-file-contract" style="font-size: 18px;"></i><span>Reportes</span></a>
                     <ul class="dropdown-menu">
                         <li data-menu=""><a class="dropdown-item" href="sales_report.php" data-toggle=""><i class="fas fa-file-contract"></i><span>Sales Report</span></a>
                         </li>
@@ -160,7 +160,7 @@ try
                         <li data-menu=""><a class="dropdown-item" href="purchase_report.php?expired=1" data-toggle=""><i class="la la-exclamation-circle"></i><span>Purchase Expiry Report</span></a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
                 <?php if($_SESSION['role']=='admin'){ ?>
                 <li class="nav-item"><a class="dropdown-toggle nav-link" href="settings.php"><i class="fas fa-cogs" style="font-size: 18px;"></i><span>Config</span></a>
                 </li>
@@ -180,3 +180,6 @@ try
       
     <!-- extension responsive -->
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
