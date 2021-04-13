@@ -91,7 +91,7 @@ try
                     <label>Email</label>
                     <div class="input-group">
                         <span class="fa fa-envelope" aria-hidden="true"></span>
-                        <input type="email" name="email" placeholder="Escribe Tu Correo" required=""> 
+                        <input type="email" name="email" placeholder="Escribe Tu Correo" required="" autofocus="on"> 
                     </div>
                     <label>Contraseña</label>
                     <div class="input-group">
