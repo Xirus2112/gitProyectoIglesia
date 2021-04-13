@@ -8,7 +8,7 @@ $dbname = "administradoriglesia";
 $currency = "INR";
 /*date_default_timezone_set('Africa/Dar_es_salaam');*/
 
-date_default_timezone_set('Asia/Kolkata');
+date_default_timezone_set('America/Colombia');
 
 //Installation - Include the last slash
 $instalation_dir = "http://localhost/pharmacy/";
