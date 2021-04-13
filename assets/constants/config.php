@@ -15,5 +15,5 @@ $instalation_dir = "http://localhost/pharmacy/";
 
 //Mail settings
 $smtp_host = 'smtp.gmail.com';
-$smtp_user = 'onlineexams285@gmail.com';
+$smtp_user = 'algo@gmail.com';
 $smtp_pass = 'EJWGVROGIYIQNHVB';
