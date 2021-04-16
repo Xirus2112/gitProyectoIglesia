@@ -7,11 +7,9 @@ $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $stmt = $conn->prepare("SELECT dp.id,dp.nombre,dp.apellidoPaterno,dp.apellidoMaterno,dp.email,dp.role,dp.telefonoMovil,dp.telefonoFijo,dp.calle,dp.carrera,dp.casaNumero,de.departamento AS departamento,mu.municipio AS municipio,dp.codPostal,tp.nombre AS tipoPersona,cs.nombre AS clasificacionSocial,ec.nombre AS estadoCivil,ge.nombre AS genero,dp.fechaNacimiento,ep.nombre AS estado,dp.lugarNacimiento,dp.nacionalidad,dp.documentoIdentidad,dp.miembroDesde,dp.fechaConversionCristiana,dp.nombreIglesiaConversion,dp.bautizado,dp.iglesiaAnterior,dp.profesionTrabajo,dp.lugarTrabajo,dp.direccionTrabajo,dp.telefonoTrabajo,dp.avator,ep.idEstado
     FROM administradoriglesia.datospersonas dp 
-	INNER JOIN administradoriglesia.departamentos de ON dp.idDepartamento=de.id_departamento
 	INNER JOIN administradoriglesia.estadocivil ec ON dp.IdEstadoCivil=ec.idEstadoCivil
 	INNER JOIN administradoriglesia.estadopersona ep ON dp.idEstadoPersona=ep.idEstado
 	INNER JOIN administradoriglesia.genero ge ON dp.IdGenero=ge.idGenero
-	INNER JOIN administradoriglesia.municipios mu ON dp.idMunicipio=mu.id_municipio
 	INNER JOIN administradoriglesia.tipopersona tp ON dp.idTipoPersona=tp.idTipoPersona
 	INNER JOIN administradoriglesia.clasificacionsocial cs ON dp.IdClasificacionSocial=cs.idClasificacion WHERE delete_status=0");
 $stmt->execute();
