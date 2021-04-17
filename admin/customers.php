@@ -5,13 +5,16 @@ include('header.php');
 
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$stmt = $conn->prepare("SELECT dp.id,dp.nombre,dp.apellidoPaterno,dp.apellidoMaterno,dp.email,dp.role,dp.telefonoMovil,dp.telefonoFijo,dp.calle,dp.carrera,dp.casaNumero,de.departamento AS departamento,mu.municipio AS municipio,dp.codPostal,tp.nombre AS tipoPersona,cs.nombre AS clasificacionSocial,ec.nombre AS estadoCivil,ge.nombre AS genero,dp.fechaNacimiento,ep.nombre AS estado,dp.lugarNacimiento,dp.nacionalidad,dp.documentoIdentidad,dp.miembroDesde,dp.fechaConversionCristiana,dp.nombreIglesiaConversion,dp.bautizado,dp.iglesiaAnterior,dp.profesionTrabajo,dp.lugarTrabajo,dp.direccionTrabajo,dp.telefonoTrabajo,dp.avator,ep.idEstado
-    FROM administradoriglesia.datospersonas dp 
-	INNER JOIN administradoriglesia.estadocivil ec ON dp.IdEstadoCivil=ec.idEstadoCivil
-	INNER JOIN administradoriglesia.estadopersona ep ON dp.idEstadoPersona=ep.idEstado
-	INNER JOIN administradoriglesia.genero ge ON dp.IdGenero=ge.idGenero
-	INNER JOIN administradoriglesia.tipopersona tp ON dp.idTipoPersona=tp.idTipoPersona
-	INNER JOIN administradoriglesia.clasificacionsocial cs ON dp.IdClasificacionSocial=cs.idClasificacion WHERE delete_status=0");
+$stmt = $conn->prepare("SELECT  dp.id,dp.nombre,dp.apePaterno,dp.apeMaterno,dp.correo,dp.telfMovil,dp.telfFijo,dp.calle,dp.carrera,dp.casa,dp.departamento AS departamento,dp.ciudad AS municipio,dp.barrio,tp.description AS tipopersona,
+                                cs.description AS clasificacionSocial,ec.description AS estadoCivil,ge.description AS genero,dp.fNacimiento,ep.description AS estado,dp.documentoIdentidad,dp.fingresoiglesia,dp.fConversion,dp.nombreIglesiaConversion,dp.esbautizado,
+                                dp.nombreiglesiaAnterior,dp.profesion,dp.direccionTrabajo,dp.direccionTrabajo,dp.telfTrabajo,dp.avatar,ep.description
+                        FROM administradoriglesia.datospersonas dp 
+                            INNER JOIN administradoriglesia.estadocivil ec ON dp.IdEstadoCivil=ec.id
+                            INNER JOIN administradoriglesia.estatusmembresia ep ON dp.idEstatusmembresia=ep.id
+                            INNER JOIN administradoriglesia.genero ge ON dp.IdGenero=ge.id
+                            INNER JOIN administradoriglesia.tipopersona tp ON dp.idTipoPersona=tp.id
+                            INNER JOIN administradoriglesia.clasificacionsocial cs ON dp.IdClasificacionSocial=cs.id
+                        WHERE delete_status=0");
 $stmt->execute();
 $result = $stmt->fetchAll(); 
 //print_r ($result['name']) ;
