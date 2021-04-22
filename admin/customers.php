@@ -6,7 +6,7 @@ include('header.php');
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $stmt = $conn->prepare("SELECT  dp.id,dp.nombre,dp.apePaterno,dp.apeMaterno,dp.correo,dp.telfMovil,dp.telfFijo,dp.calle,dp.carrera,dp.casa,dp.departamento AS departamento,dp.ciudad AS municipio,dp.barrio,tp.description AS tipopersona,
-                                cs.description AS clasificacionSocial,ec.description AS estadoCivil,ge.description AS genero,dp.fNacimiento,ep.description AS estado,dp.documentoIdentidad,dp.fingresoiglesia,dp.fConversion,dp.nombreIglesiaConversion,dp.esbautizado,
+                                cs.description AS clasificacionSocial,ec.description AS estadoCivil,ge.description AS genero,dp.fNacimiento,ep.id AS estado,dp.documentoIdentidad,dp.fingresoiglesia,dp.fConversion,dp.nombreIglesiaConversion,dp.esbautizado,
                                 dp.nombreiglesiaAnterior,dp.profesion,dp.direccionTrabajo,dp.direccionTrabajo,dp.telfTrabajo,dp.avatar,ep.description
                         FROM administradoriglesia.datospersonas dp 
                             INNER JOIN administradoriglesia.estadocivil ec ON dp.IdEstadoCivil=ec.id
@@ -108,11 +108,11 @@ $result = $stmt->fetchAll();
                                                     <?php 
                                                     $i=1;
                                                     foreach ($result as $value) { 
-                                                        $avatar=$value['avator']; 
-                                                        $nombreApe= $value['nombre'] . " " . $value['apellidoPaterno'] . " " . $value['apellidoMaterno'];
-                                                        $direccion= "Calle " . $value['calle'] . " #" . $value['carrera'] . " - " . $value['casaNumero'];
-                                                        $idEstado = $value['idEstado'];
-                                                        $estado= $value['estado'];
+                                                        $avatar=$value['avatar']; 
+                                                        $nombreApe= $value['nombre'] . " " . $value['apePaterno'] . " " . $value['apeMaterno'];
+                                                        $direccion= "Calle " . $value['calle'] . " #" . $value['carrera'] . " - " . $value['casa'];
+                                                        $idEstado = $value['estado'];
+                                                        //$estado= $value['estado'];
                                                         ?>
                                                         
                                                     <tr>
@@ -123,16 +123,18 @@ $result = $stmt->fetchAll();
                                                                 print ' <img  id="blah" class="rounded-circle mx-auto d-block img-fluid"  src="../assets/uploads/avatar/'.$avatar.'" id="userDropdown" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" width="175" height="175">'; }
                                                             ?></td>
                                                         <td><?=$nombreApe?></td>
-                                                        <td><?=$value['email']?></td>
-                                                        <td><?=$value['telefonoMovil']?></td>
-                                                        <td><?=$value['telefonoFijo']?></td>
+                                                        <td><?=$value['correo']?></td>
+                                                        <td><?=$value['telfMovil']?></td>
+                                                        <td><?=$value['telfFijo']?></td>
                                                         <td><?=$direccion?></td>
-                                                        <td><?=$value['municipio']?></td>
-                                                        <td><?=$value['tipoPersona']?></td>
-                                                        <td><?php if ($idEstado=='1'):?>
+                                                        <td><?=$value['departamento']?></td>
+                                                        <td><?=$value['profesion']?></td>
+                                                        <td><?php if ($idEstado < '2'):?>
                                                                 <span class="badge bg-success">Activo</span>
-                                                            <?php else :?>
+                                                            <?php elseif ($idEstado == '2'):?>
                                                                 <span class="badge bg-danger">Inactivo</span>
+                                                            <?php else :?>
+                                                                <span class="badge bg-warning">En Observación</span>
                                                             <?php endif;?>
                                                         </td>
                                                         <td>
