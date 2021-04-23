@@ -43,7 +43,7 @@ $result = $stmt->fetchAll();
                 <div class="row ">
                     <div class="card col-sm-12">
                         <div class="card-header">
-                            <a href="addcustomer.php" class="btn btn-info btn-sm">Añadir Cliente <i class="fas fa-user-plus"></i></a>
+                            <a href="addcustomer.php" class="btn btn-info btn-sm">Añadir Cliente <i class="fas fa-user-plus"></i></a>  
                             <div class="btn-group pull-right">
                                 <a href="index.php" ><button type="button" class="btn btn-info btn-sm "><i class="fas fa-user-cog"></i> Administrar Usuario</button></a>
                                 <button type="button" class="btn btn-info btn-sm"><i class="fas fa-chart-line"></i> Reportes</button>
