@@ -129,12 +129,24 @@ include('header.php');
                                                             <input type="text" name="departamento" class="form-control" required data-validation-required-message="Digite el Departamento">
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-9">
+                                                    <div class="col-sm-3">
                                                     <h5>Dirección</h5>
                                                         <div class="controls input-group">
-                                                            <input type="number" name="calle" class="form-control col-sm-1" placeholder="Cll" >
-                                                            <input type="number" name="calle" class="form-control col-sm-1" placeholder="Kra">
-                                                            <input type="number" name="calle" class="form-control col-sm-1" placeholder="Casa">
+                                                            <input type="number" name="calle" class="form-control " placeholder="Cll" >
+                                                            <input type="number" name="calle" class="form-control " placeholder="Kra">
+                                                            <input type="number" name="calle" class="form-control " placeholder="Casa">
+                                                        </div>
+                                                    </div>
+													<div class="col-sm-3 form-group">
+                                                        <h5>Departamento <span class="required">*</span></h5>
+                                                        <div class="controls">
+                                                            <input type="text" name="departamento" class="form-control" required data-validation-required-message="Digite el Departamento">
+                                                        </div>
+                                                    </div>
+													<div class="col-sm-3 form-group">
+                                                        <h5>Departamento <span class="required">*</span></h5>
+                                                        <div class="controls">
+                                                            <input type="text" name="departamento" class="form-control" required data-validation-required-message="Digite el Departamento">
                                                         </div>
                                                     </div>
                                                 </div> 
