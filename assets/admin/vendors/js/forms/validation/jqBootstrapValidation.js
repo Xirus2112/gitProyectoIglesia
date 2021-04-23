@@ -1,5 +1,5 @@
 (function ($) {
-
+// BWbo!qAcUv8DF&%#15TPQ3dAQL
     var createdElements = [];
 
     var defaults = {
@@ -113,7 +113,7 @@
                             $this.attr("pattern", $this.data("validationPatternPattern"));
                         }
                         if ($this.attr("pattern") !== undefined) {
-                            message = "Not in the expected format<!-- data-validation-pattern-message to override -->";
+                            message = "No es el Formato esperado<!-- data-validation-pattern-message to override -->";
                             if ($this.data("validationPatternMessage")) {
                                 message = $this.data("validationPatternMessage");
                             }
@@ -202,7 +202,7 @@
                         //                                                     EMAIL
                         // ---------------------------------------------------------
                         if ($this.attr("type") !== undefined && $this.attr("type").toLowerCase() === "email") {
-                            message = "Not a valid email address<!-- data-validation-email-message to override -->";
+                            message = "La dirección del correo no es valida<!-- data-validation-email-message to override -->";
                             if ($this.data("validationEmailMessage")) {
                                 message = $this.data("validationEmailMessage");
                             }
@@ -808,7 +808,7 @@
                     var result = {};
                     result.regex = regexFromString('[a-zA-Z0-9.!#$%&\u2019*+/=?^_`{|}~-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}');
 
-                    var message = "Not a valid email address";
+                    var message = "La dirección del correo no es valida";
                     if ($this.data("validation" + name + "Message")) {
                         message = $this.data("validation" + name + "Message");
                     }
@@ -1035,7 +1035,7 @@
 
                     result.regex = regexFromString("([+-]?\\d+(\\" + result.decimal + "\\d+)?)?");
 
-                    result.message = "Must be a number";
+                    result.message = "Tiene que ser un número";
                     var dataMessage = $this.data("validation" + name + "Message");
                     if (dataMessage) {
                         result.message = dataMessage;
@@ -1058,7 +1058,7 @@
                     var result = !(regexResult && stepResult && typeResult);
                     return result;
                 },
-                message: "Must be a number"
+                message: "Solo valores numéricos"
             }
         },
         builtInValidators: {
