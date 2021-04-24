@@ -2,6 +2,8 @@
 require_once('../assets/constants/config.php');
 require_once('constants/check-login.php');
 include('header.php');
+
+//print_r($result['description']);
 ?>
     <!-- BEGIN: Content-->
     <div class="app-content content">
@@ -85,29 +87,30 @@ include('header.php');
                                                 <!-- 2da Fila -->
                                                 <div class="row ">
                                                     <div class="col-sm-3 form-group">
-                                                        <h5>E-mail <span>*</span></h5>
+                                                        <h5>Fecha Nacimiento <span>*</span></h5>
                                                         <div class="controls">
-                                                            <input type="email" name="email" class="form-control" required data-validation-required-message="Ingresa tu Correo">
+                                                            <input type="date" name="fnacimiento" class="form-control" required data-validation-required-message="Ingresa tu Fecha de Nacimiento">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3 form-group">
+                                                        <h5>Correo<span class="required">*</span></h5>
+                                                        <div class="controls">
+                                                            <input type="email" name="correo" class="form-control" required data-validation-required-message="Ingresa el correo">
                                                         </div>
                                                     </div>                                                
                                                     <div class="col-sm-3 form-group">
                                                         <h5>Telefono Celular <span class="required">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="tel" name="telfmovil" class="form-control" required data-validation-required-message="Ingresa Telf Celular">
+                                                            <input type="number" name="telfmovil" class="form-control" required data-validation-required-message="Ingresa Telf Celular">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-3 form-group">
                                                         <h5>Telefono Fijo <span class="required">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="tel" name="telfijo" class="form-control" required data-validation-required-message="Ingresa Telf Fijo">
+                                                            <input type="number" name="telfijo" class="form-control" required data-validation-required-message="Ingresa Telf Fijo">
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-3 form-group">
-                                                        <h5>Ciudad <span class="required">*</span></h5>
-                                                        <div class="controls">
-                                                            <input type="text" name="ciudad" class="form-control" required data-validation-required-message="Digite la Ciudad">
-                                                        </div>
-                                                    </div>                                                    
+                                                                                                        
                                                     <!-- 
                                                         pattern="[0-9]" -> para solo valores numericos
                                                         pattern="[A-za-z]+" -> para solo valores de texto
@@ -124,6 +127,12 @@ include('header.php');
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-sm-3 form-group">
+                                                        <h5>Ciudad <span class="required">*</span></h5>
+                                                        <div class="controls">
+                                                            <input type="text" name="ciudad" class="form-control" required data-validation-required-message="Digite la Ciudad">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3 form-group">
                                                         <h5>Departamento <span class="required">*</span></h5>
                                                         <div class="controls">
                                                             <input type="text" name="departamento" class="form-control" required data-validation-required-message="Digite el Departamento">
@@ -132,24 +141,39 @@ include('header.php');
                                                     <div class="col-sm-3">
                                                     <h5>Dirección</h5>
                                                         <div class="controls input-group">
-                                                            <input type="number" name="calle" class="form-control " placeholder="Cll" >
-                                                            <input type="number" name="calle" class="form-control " placeholder="Kra">
-                                                            <input type="number" name="calle" class="form-control " placeholder="Casa">
+                                                            <input type="text" name="calle" class="form-control " placeholder="Calle" >
+                                                            <input type="text" name="calle" class="form-control " placeholder="Carrera">
+                                                            <input type="text" name="calle" class="form-control " placeholder="Casa">
                                                         </div>
                                                     </div>
 													<div class="col-sm-3 form-group">
-                                                        <h5>Departamento <span class="required">*</span></h5>
+                                                        <h5>Barrio <span class="required">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="text" name="departamento" class="form-control" required data-validation-required-message="Digite el Departamento">
-                                                        </div>
-                                                    </div>
-													<div class="col-sm-3 form-group">
-                                                        <h5>Departamento <span class="required">*</span></h5>
-                                                        <div class="controls">
-                                                            <input type="text" name="departamento" class="form-control" required data-validation-required-message="Digite el Departamento">
+                                                            <input type="text" name="barrio" class="form-control" required data-validation-required-message="Digite el barrio">
                                                         </div>
                                                     </div>
                                                 </div> 
+                                                <div class="row">
+                                                    <div class="col-sm-3 form-group">
+                                                        <h5>Tipo de Persona <span class="required">*</span></h5>
+                                                        <div class="controls">
+                                                            <select name="tipopersona" id="">
+                                                            <?php
+                                                            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                                                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                            $stmt = $conn->prepare("SELECT  * FROM tipopersona");
+                                                            $stmt->execute();
+                                                            $result = $stmt->fetchAll(); 
+                                                                foreach ($consulta as $tipoPersona):
+                                                                
+                                                            ?>
+                                                                <option value="<?php echo $tipoPersona['description']?>"><?php echo $tipoPersona['description']?></option>
+                                                            <?php endforeach ;?>
+                                                            </select>
+                                                            <!-- <input type="text" name="barrio" class="form-control" required data-validation-required-message="Digite el barrio"> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <!-- Botones -->
                                                 <div class="text-center">
                                                     <button type="submit" name="btn_save" class="btn btn-secondary">Submit <i class="fas fa-check ml-1"></i></button>
