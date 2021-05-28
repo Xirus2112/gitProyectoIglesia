@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- Host:                         127.0.0.1
--- Versión del servidor:         10.4.18-MariaDB - mariadb.org binary distribution
+-- Versión del servidor:         10.4.19-MariaDB - mariadb.org binary distribution
 -- SO del servidor:              Win64
--- HeidiSQL Versión:             11.1.0.6116
+-- HeidiSQL Versión:             11.2.0.6213
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -35,6 +35,7 @@ INSERT INTO `clasificacionsocial` (`id`, `description`) VALUES
 -- Volcando estructura para tabla administradoriglesia.datospersonas
 CREATE TABLE IF NOT EXISTS `datospersonas` (
   `id` int(5) NOT NULL,
+  `dctoIdentidad` int(10) DEFAULT NULL,
   `nombre` varchar(50) NOT NULL,
   `apePaterno` varchar(50) NOT NULL,
   `apeMaterno` varchar(50) DEFAULT NULL,
@@ -62,6 +63,7 @@ CREATE TABLE IF NOT EXISTS `datospersonas` (
   `direccionTrabajo` varchar(100) DEFAULT NULL,
   `telfTrabajo` varchar(10) DEFAULT NULL,
   `avatar` varchar(255) DEFAULT NULL,
+  `delete_status` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKdp_tipoPersona` (`idTipoPersona`),
   KEY `FKdp_clasificacionSocial` (`idClasificacionSocial`),
@@ -77,6 +79,8 @@ CREATE TABLE IF NOT EXISTS `datospersonas` (
 
 -- Volcando datos para la tabla administradoriglesia.datospersonas: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `datospersonas` DISABLE KEYS */;
+INSERT INTO `datospersonas` (`id`, `dctoIdentidad`, `nombre`, `apePaterno`, `apeMaterno`, `correo`, `telfMovil`, `telfFijo`, `calle`, `carrera`, `casa`, `ciudad`, `departamento`, `codPostal`, `fNacimiento`, `idTipoPersona`, `idClasificacionSocial`, `idEstadoPersona`, `idGenero`, `idEstatusMembresia`, `fIngresoIglesia`, `fConversion`, `nombreIglesiaConversion`, `esBautizado`, `nombreIglesiaAnterior`, `profesion`, `direccionTrabajo`, `telfTrabajo`, `avatar`, `delete_status`) VALUES
+	(1, 1143426188, 'Carlos', 'Alvarado', 'Martinez', 'carlosalvarado1901@gmail.com', '3017453145', '3194406', '21', '14', '41', 'Barranquilla', 'Atlantico', '80001', '1990-09-26', 3, 2, 4, 0, 3, '2021-05-28', '2021-05-28', 'Pentecostal', b'1', 'No recuerda', 'Ing. Sistemas', 'Sin trabajo', NULL, '17304.png', b'0');
 /*!40000 ALTER TABLE `datospersonas` ENABLE KEYS */;
 
 -- Volcando estructura para tabla administradoriglesia.estadopersona
@@ -230,7 +234,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
 -- Volcando datos para la tabla administradoriglesia.settings: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
 INSERT INTO `settings` (`id`, `fevicon`, `logo`, `title`, `login_image`, `footer`, `currency`) VALUES
-	(1, 'fevicon-179.png', 'logo-597.png', 'Pharmacy', 'login_image-324.png', 'Footer', 'Rs.');
+	(1, 'fevicon.png', 'logo_iaunj.png', 'Iglesia IAUNJ', 'login_image-324.png', 'Footer', 'Rs.');
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 
 -- Volcando estructura para tabla administradoriglesia.tbl_admin
@@ -279,7 +283,7 @@ CREATE TABLE IF NOT EXISTS `tipopersona` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla administradoriglesia.tipopersona: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla administradoriglesia.tipopersona: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `tipopersona` DISABLE KEYS */;
 INSERT INTO `tipopersona` (`id`, `description`) VALUES
 	(1, 'Vicitante'),
@@ -289,6 +293,6 @@ INSERT INTO `tipopersona` (`id`, `description`) VALUES
 /*!40000 ALTER TABLE `tipopersona` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
