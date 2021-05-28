@@ -130,7 +130,7 @@ $result = $stmt->fetchAll();
                                                             class="rounded-circle mx-auto d-block img-fluid" width="175"
                                                             height="175">
                                                         <?php }else{
-                                                                print ' <img  id="blah" class="rounded-circle mx-auto d-block img-fluid"  src="../assets/uploads/avatar/'.$avatar.'" id="userDropdown" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" width="175" height="175">'; }
+                                                                print ' <img  id="blah" class="rounded-circle mx-auto d-block img-fluid"  src="../assets/uploads/avatar/'.$avatar.'" id="userDropdown" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100px; height:100px; margin:auto; display:block">'; }//width="175" height="175"
                                                             ?>
                                                     </td>
                                                     <td><?=$nombreApe?></td>
