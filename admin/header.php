@@ -148,7 +148,7 @@ try
                 <!-- <li class="nav-item"><a class="dropdown-toggle nav-link" href="categories.php"><i class="la la-tags"></i><span>Categorias</span></a></li> -->
                 <!-- <li class="nav-item"><a class="dropdown-toggle nav-link" href="suppliers.php"><i class="la la-truck"></i><span>Proveedores</span></a></li> -->
                 <li class="nav-item"><a class="dropdown-toggle nav-link" href="customers.php"><i class="fas fa-user-friends" style="font-size: 18px;"></i><span>Personas</span></a></li>
-                <li class="nav-item"><a class="dropdown-toggle nav-link" href="users.php"><i class="fas fa-user-tie" style="font-size: 18px;"></i><span>Usuarios</span></a>
+                <!-- <li class="nav-item"><a class="dropdown-toggle nav-link" href="users.php"><i class="fas fa-user-tie" style="font-size: 18px;"></i><span>Usuarios</span></a> -->
                 </li>
                 <!-- <li class="dropdown nav-item" data-menu="dropdown"><a class="dropdown-toggle nav-link" href="" data-toggle="dropdown"><i class="fas fa-file-contract" style="font-size: 18px;"></i><span>Reportes</span></a>
                     <ul class="dropdown-menu">
