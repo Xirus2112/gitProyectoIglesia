@@ -43,10 +43,10 @@ $result = $stmt->fetchAll();
             <div class="row ">
                 <div class="card col-sm-12">
                     <div class="card-header">
-                        <a href="addcustomer.php" class="btn btn-info btn-sm">Añadir Cliente <i
+                        <a href="addcustomer.php" class="btn btn-info btn-sm">Nuevo Miembro <i
                                 class="fas fa-user-plus"></i></a>
                         <div class="btn-group pull-right">
-                            <a href="index.php"><button type="button" class="btn btn-info btn-sm "><i
+                            <a href="users.php"><button type="button" class="btn btn-info btn-sm "><i
                                         class="fas fa-user-cog"></i> Administrar Usuario</button></a>
                             <button type="button" class="btn btn-info btn-sm"><i class="fas fa-chart-line"></i>
                                 Reportes</button>
@@ -130,7 +130,7 @@ $result = $stmt->fetchAll();
                                                             class="rounded-circle mx-auto d-block img-fluid" width="175"
                                                             height="175">
                                                         <?php }else{
-                                                                print ' <img  id="blah" class="rounded-circle mx-auto d-block img-fluid"  src="../assets/uploads/avatar/'.$avatar.'" id="userDropdown" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width:100px; height:100px; margin:auto; display:block">'; }//width="175" height="175"
+                                                                print ' <img  id="blah" class="rounded-circle mx-auto d-block img-fluid"  src="../assets/uploads/avatar/'.$avatar.'" id="userDropdown" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" width="150px" height="150px">'; }
                                                             ?>
                                                     </td>
                                                     <td><?=$nombreApe?></td>
