@@ -141,7 +141,7 @@ include('header.php');
                                                     <div class="col-sm-3">
                                                     <h5>Dirección</h5>
                                                         <div class="controls input-group">
-                                                            <input type="text" name="calle" class="form-control " placeholder="Calle" >
+                                                            <input type="text" name="calle" class="form-control " placeholder="Calle" required data-validation-required-message="Digite el Departamento">
                                                             <input type="text" name="calle" class="form-control " placeholder="Carrera">
                                                             <input type="text" name="calle" class="form-control " placeholder="Casa">
                                                         </div>
@@ -154,20 +154,99 @@ include('header.php');
                                                     </div>
                                                 </div> 
                                                 <div class="row">
-                                                    <div class="col-sm-3 form-group">
+                                                    <div class="col-sm-3">
+                                                    <!-- TIPO DE PERSONA -->
                                                         <h5>Tipo de Persona <span class="required">*</span></h5>
-                                                        <div class="controls">
-                                                            <select name="tipopersona" id="">
+                                                        <div class="controls form-group">
+                                                            <select name="tipopersona" id="" required data-validation-required-message="Digite el barrio">
                                                             <?php
                                                             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
                                                             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                                             $stmt = $conn->prepare("SELECT  * FROM tipopersona");
                                                             $stmt->execute();
                                                             $result = $stmt->fetchAll(); 
-                                                                foreach ($consulta as $tipoPersona):
+                                                            //print  
                                                                 
                                                             ?>
-                                                                <option value="<?php echo $tipoPersona['description']?>"><?php echo $tipoPersona['description']?></option>
+                                                            <?PHP 
+                                                                foreach ($result as $tipoPersona):
+                                                            ?>
+                                                                <option>Tipo de Persona</option>
+                                                                <option value="<?php echo $tipoPersona['description'];?>" ><?php echo $tipoPersona['description'];?></option>
+
+                                                            <?php endforeach ;?>
+                                                            </select>
+                                                            <!-- <input type="text" name="barrio" class="form-control" required data-validation-required-message="Digite el barrio"> -->
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3 form-group">
+                                                    <!--  -->
+                                                        <h5>Clasificacion Social <span class="required">*</span></h5>
+                                                        <div class="controls">
+                                                            <select name="tipopersona" id="" class="form-control">
+                                                            <?php
+                                                            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                                                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                            $stmt = $conn->prepare("SELECT  * FROM clasificacionsocial");
+                                                            $stmt->execute();
+                                                            $result = $stmt->fetchAll(); 
+                                                            //print  
+                                                                
+                                                            ?>
+                                                            <?PHP 
+                                                                foreach ($result as $clasificacion):
+                                                            ?>
+                                                                <option>Clasificación Social</option>
+                                                                <option value="<?php echo $clasificacion['description'];?>"><?php echo $clasificacion['description'];?></option>
+
+                                                            <?php endforeach ;?>
+                                                            </select>
+                                                            <!-- <input type="text" name="barrio" class="form-control" required data-validation-required-message="Digite el barrio"> -->
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3 form-group">
+                                                        <h5>Estado Civil<span class="required">*</span></h5>
+                                                        <div class="controls">
+                                                            <select name="tipopersona" id="">
+                                                            <?php
+                                                            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                                                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                            $stmt = $conn->prepare("SELECT  * FROM estadopersona");
+                                                            $stmt->execute();
+                                                            $result = $stmt->fetchAll(); 
+                                                            //print  
+                                                                
+                                                            ?>
+                                                            <?PHP 
+                                                                foreach ($result as $estado):
+                                                            ?>
+                                                                <option>Estado Civil</option>
+                                                                <option value="<?php echo $estado['descripcion'];?>"><?php echo $estado['descripcion'];?></option>
+
+                                                            <?php endforeach ;?>
+                                                            </select>
+                                                            <!-- <input type="text" name="barrio" class="form-control" required data-validation-required-message="Digite el barrio"> -->
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3 form-group">
+                                                        <h5>Género<span class="required">*</span></h5>
+                                                        <div class="controls">
+                                                            <select name="tipopersona" id="">
+                                                            <?php
+                                                            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                                                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                            $stmt = $conn->prepare("SELECT  * FROM genero");
+                                                            $stmt->execute();
+                                                            $result = $stmt->fetchAll(); 
+                                                            //print  
+                                                                
+                                                            ?>
+                                                            <?PHP 
+                                                                foreach ($result as $genero):
+                                                            ?>
+                                                                <option>Género</option>
+                                                                <option value="<?php echo $genero['description'];?>"><?php echo $genero['description'];?></option>
+
                                                             <?php endforeach ;?>
                                                             </select>
                                                             <!-- <input type="text" name="barrio" class="form-control" required data-validation-required-message="Digite el barrio"> -->
