@@ -62,7 +62,7 @@ include('header.php');
                                                     <div class="col-sm-3 form-group">
                                                         <h5>Identificación <span class="required">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="number" name="cedula" class="form-control" title="Cedula" required data-validation-required-message="Ingresa el Numero de Cedula" autofocus>
+                                                            <input type="number" name="dctoidentidad" class="form-control" title="Cedula" required data-validation-required-message="Ingresa el Numero de Cedula" autofocus>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-3 form-group">
@@ -74,13 +74,13 @@ include('header.php');
                                                     <div class="col-sm-3 form-group">
                                                         <h5>Apellido Paterno <span class="required">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="text" name="apellidoPaterno" class="form-control" required data-validation-required-message="Ingresa tu Apellido Paterno" >
+                                                            <input type="text" name="apePaterno" class="form-control" required data-validation-required-message="Ingresa tu Apellido Paterno" >
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-3 form-group">
                                                         <h5>Apellido Materno <span class="required">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="text" name="apellidoMaterno" class="form-control" required data-validation-required-message="Ingresa tu Apellido Materno" >
+                                                            <input type="text" name="apeMaterno" class="form-control" required data-validation-required-message="Ingresa tu Apellido Materno" >
                                                         </div>
                                                     </div>    
                                                 </div>
@@ -101,13 +101,13 @@ include('header.php');
                                                     <div class="col-sm-3 form-group">
                                                         <h5>Telefono Celular <span class="required">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="number" name="telfmovil" class="form-control" required data-validation-required-message="Ingresa Telf Celular">
+                                                            <input type="number" name="telfMovil" class="form-control" required data-validation-required-message="Ingresa Telf Celular">
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-3 form-group">
                                                         <h5>Telefono Fijo <span class="required">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="number" name="telfijo" class="form-control" required data-validation-required-message="Ingresa Telf Fijo">
+                                                            <input type="number" name="telfFijo" class="form-control" required data-validation-required-message="Ingresa Telf Fijo">
                                                         </div>
                                                     </div>
                                                                                                         
@@ -142,8 +142,8 @@ include('header.php');
                                                     <h5>Dirección</h5>
                                                         <div class="controls input-group">
                                                             <input type="text" name="calle" class="form-control " placeholder="Calle" required data-validation-required-message="Digite el Departamento">
-                                                            <input type="text" name="calle" class="form-control " placeholder="Carrera">
-                                                            <input type="text" name="calle" class="form-control " placeholder="Casa">
+                                                            <input type="text" name="carrera" class="form-control " placeholder="Carrera">
+                                                            <input type="text" name="casa" class="form-control " placeholder="Casa">
                                                         </div>
                                                     </div>
 													<div class="col-sm-3 form-group">
@@ -159,22 +159,24 @@ include('header.php');
                                                         <h5>Tipo de Persona <span class="required">*</span></h5>
                                                         <div class="controls form-group">
                                                             <select name="tipopersona" id="" required data-validation-required-message="Digite el barrio">
+                                                            <!-- <option>Tipo de Persona</option> -->
+                                                            <option value="1">Person 1</option>
                                                             <?php
-                                                            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                                                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                                            $stmt = $conn->prepare("SELECT  * FROM tipopersona");
-                                                            $stmt->execute();
-                                                            $result = $stmt->fetchAll(); 
+                                                            // $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                                                            // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                            // $stmt = $conn->prepare("SELECT  * FROM tipopersona");
+                                                            // $stmt->execute();
+                                                            // $result = $stmt->fetchAll(); 
                                                             //print  
                                                                 
                                                             ?>
                                                             <?PHP 
-                                                                foreach ($result as $tipoPersona):
+                                                                //foreach ($result as $tipoPersona):
                                                             ?>
-                                                                <option>Tipo de Persona</option>
-                                                                <option value="<?php echo $tipoPersona['description'];?>" ><?php echo $tipoPersona['description'];?></option>
+                                                                
+                                                                <!-- <option value="<?php echo $tipoPersona['id'];?>" ><?php echo $tipoPersona['description'];?></option> -->
 
-                                                            <?php endforeach ;?>
+                                                            <?php //endforeach ;?>
                                                             </select>
                                                             <!-- <input type="text" name="barrio" class="form-control" required data-validation-required-message="Digite el barrio"> -->
                                                         </div>
@@ -183,23 +185,25 @@ include('header.php');
                                                     <!--  -->
                                                         <h5>Clasificacion Social <span class="required">*</span></h5>
                                                         <div class="controls">
-                                                            <select name="tipopersona" id="" class="form-control">
+                                                            <select name="clasificacionSocial" id="" class="form-control">
+                                                            <!-- <option>Clasificación Social</option> -->
+                                                            <option value="1">Person 1</option>
                                                             <?php
-                                                            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                                                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                                            $stmt = $conn->prepare("SELECT  * FROM clasificacionsocial");
-                                                            $stmt->execute();
-                                                            $result = $stmt->fetchAll(); 
+                                                            // $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                                                            // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                            // $stmt = $conn->prepare("SELECT  * FROM clasificacionsocial");
+                                                            // $stmt->execute();
+                                                            // $result = $stmt->fetchAll(); 
                                                             //print  
                                                                 
                                                             ?>
                                                             <?PHP 
-                                                                foreach ($result as $clasificacion):
+                                                                // foreach ($result as $clasificacion):
                                                             ?>
-                                                                <option>Clasificación Social</option>
-                                                                <option value="<?php echo $clasificacion['description'];?>"><?php echo $clasificacion['description'];?></option>
+                                                                
+                                                                <!-- <option value="<?php echo $clasificacion['id'];?>"><?php echo $clasificacion['description'];?></option> -->
 
-                                                            <?php endforeach ;?>
+                                                            <?php //endforeach ;?>
                                                             </select>
                                                             <!-- <input type="text" name="barrio" class="form-control" required data-validation-required-message="Digite el barrio"> -->
                                                         </div>
@@ -207,23 +211,25 @@ include('header.php');
                                                     <div class="col-sm-3 form-group">
                                                         <h5>Estado Civil<span class="required">*</span></h5>
                                                         <div class="controls">
-                                                            <select name="tipopersona" id="">
+                                                            <select name="estadoPersona" id="">
+                                                            <!-- <option>Estado Civil</option> -->
+                                                            <option value="1">Person 1</option>
                                                             <?php
-                                                            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                                                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                                            $stmt = $conn->prepare("SELECT  * FROM estadopersona");
-                                                            $stmt->execute();
-                                                            $result = $stmt->fetchAll(); 
+                                                            // $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                                                            // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                            // $stmt = $conn->prepare("SELECT  * FROM estadopersona");
+                                                            // $stmt->execute();
+                                                            // $result = $stmt->fetchAll(); 
                                                             //print  
                                                                 
                                                             ?>
                                                             <?PHP 
-                                                                foreach ($result as $estado):
+                                                                //foreach ($result as $estado):
                                                             ?>
-                                                                <option>Estado Civil</option>
-                                                                <option value="<?php echo $estado['descripcion'];?>"><?php echo $estado['descripcion'];?></option>
+                                                                <!-- 
+                                                                <option value="<?php echo $estado['id'];?>"><?php echo $estado['descripcion'];?></option> -->
 
-                                                            <?php endforeach ;?>
+                                                            <?php //endforeach ;?>
                                                             </select>
                                                             <!-- <input type="text" name="barrio" class="form-control" required data-validation-required-message="Digite el barrio"> -->
                                                         </div>
@@ -231,23 +237,25 @@ include('header.php');
                                                     <div class="col-sm-3 form-group">
                                                         <h5>Género<span class="required">*</span></h5>
                                                         <div class="controls">
-                                                            <select name="tipopersona" id="">
+                                                            <select name="genero" id="">
+                                                            <!-- <option>Género</option> -->
+                                                            <option value="1">Person 1</option>
                                                             <?php
-                                                            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                                                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                                            $stmt = $conn->prepare("SELECT  * FROM genero");
-                                                            $stmt->execute();
-                                                            $result = $stmt->fetchAll(); 
+                                                            // $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                                                            // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                            // $stmt = $conn->prepare("SELECT  * FROM genero");
+                                                            // $stmt->execute();
+                                                            // $result = $stmt->fetchAll(); 
                                                             //print  
                                                                 
                                                             ?>
                                                             <?PHP 
-                                                                foreach ($result as $genero):
+                                                                //foreach ($result as $genero):
                                                             ?>
-                                                                <option>Género</option>
-                                                                <option value="<?php echo $genero['description'];?>"><?php echo $genero['description'];?></option>
+                                                                
+                                                                <!-- <option value="<?php echo $genero['id'];?>"><?php echo $genero['description'];?></option> -->
 
-                                                            <?php endforeach ;?>
+                                                            <?php //endforeach ;?>
                                                             </select>
                                                             <!-- <input type="text" name="barrio" class="form-control" required data-validation-required-message="Digite el barrio"> -->
                                                         </div>
@@ -255,7 +263,7 @@ include('header.php');
                                                 </div>
                                                 <!-- Botones -->
                                                 <div class="text-center">
-                                                    <button type="submit" name="btn_save" class="btn btn-secondary">Submit <i class="fas fa-check ml-1"></i></button>
+                                                    <button type="submit" name="btn_save" class="btn btn-secondary">Guardar Miembro<i class="fas fa-check ml-1"></i></button>
                                                     <a href="customers.php" class="btn btn-danger">Cancel <i class="la la-close ml-1"></i></a>
                                                 </div>
                                             </fieldset>  
