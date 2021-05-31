@@ -10,10 +10,30 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if(isset($_POST['btn_save']))
 {
-	$stmt = $conn->prepare("INSERT INTO `medicine_category`( `name`,`short_name`, `added_date`) VALUES (:name,:short_name, :added_date)");
-	$stmt->bindParam(':name', $_POST['name']);
-	$stmt->bindParam(':short_name', $_POST['short_name']);
-	$stmt->bindParam(':added_date', date('Y-m-d'));	
+	$stmt = $conn->prepare("INSERT INTO datospersonas( dctoidentidad,nombre,apePaterno,apeMaterno,fNacimiento,correo,telfMovil,telfFijo,ciudad,departamento,calle,carrera,casa,barrio,idTipoPersona,idClasificacionSocial,idEstadoPersona,idGenero) VALUES 
+													 (:dctoidentidad,:nombre,:apePaterno,:apeMaterno,:fNacimiento,:correo,:telfMovil,:telfFijo,:ciudad,:departamento,:calle,:carrera,:casa,:barrio,:idTipoPersona,:idClasificacionSocial,:idEstadoPersona,:idGenero)");
+	$stmt->bindParam(':dctoidentidad', $_POST['dctoidentidad']);
+	$stmt->bindParam(':nombre', $_POST['nombre']);
+	$stmt->bindParam(':apePaterno', $_POST['apePaterno']);
+	$stmt->bindParam(':apeMaterno', $_POST['apeMaterno']);
+	$stmt->bindParam(':fNacimiento', $_POST['fNacimiento']);
+	$stmt->bindParam(':correo', $_POST['correo']);
+	$stmt->bindParam(':telfMovil', $_POST['telfMovil']);
+	$stmt->bindParam(':telfFijo', $_POST['telfFijo']);
+	$stmt->bindParam(':ciudad', $_POST['ciudad']);
+	$stmt->bindParam(':departamento', $_POST['departamento']);
+	$stmt->bindParam(':calle', $_POST['calle']);
+	$stmt->bindParam(':carrera', $_POST['carrera']);
+	$stmt->bindParam(':casa', $_POST['casa']);
+	$stmt->bindParam(':barrio', $_POST['barrio']);
+	$stmt->bindParam(':idtipopersona', $_POST['tipopersona']);
+	$stmt->bindParam(':idClasificacionSocial', $_POST['clasificacionSocial']);
+	$stmt->bindParam(':idEstadoPersona', $_POST['estadoPersona']);
+	$stmt->bindParam(':idGenero', $_POST['genero']);
+
+
+	// $stmt->bindParam(':short_name', $_POST['short_name']);
+	// $stmt->bindParam(':added_date', date('Y-m-d'));	
 	$stmt->execute();
 
 	$_SESSION['reply'] = "003";
