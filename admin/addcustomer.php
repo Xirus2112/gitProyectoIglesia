@@ -158,25 +158,24 @@ include('header.php');
                                                     <!-- TIPO DE PERSONA -->
                                                         <h5>Tipo de Persona <span class="required">*</span></h5>
                                                         <div class="controls form-group">
-                                                            <select name="tipopersona" id="" required data-validation-required-message="Digite el barrio">
-                                                            <!-- <option>Tipo de Persona</option> -->
-                                                            <option value="1">Person 1</option>
+                                                            <select name="tipopersona" id="">
+                                                            <option>Tipo de Persona</option>
+                                                            <!-- <option value="1">Person 1</option> -->
                                                             <?php
-                                                            // $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                                                            // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                                            // $stmt = $conn->prepare("SELECT  * FROM tipopersona");
-                                                            // $stmt->execute();
-                                                            // $result = $stmt->fetchAll(); 
-                                                            //print  
-                                                                
+                                                            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+                                                            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                                            $stmt = $conn->prepare("SELECT  * FROM tipopersona");
+                                                            $stmt->execute();
+                                                            $result = $stmt->fetchAll(); 
+                                                                                                                            
                                                             ?>
                                                             <?PHP 
-                                                                //foreach ($result as $tipoPersona):
+                                                                foreach ($result as $tipoPersona):
                                                             ?>
                                                                 
-                                                                <!-- <option value="<?php echo $tipoPersona['id'];?>" ><?php echo $tipoPersona['description'];?></option> -->
+                                                                <option value="<?php echo $tipoPersona['id'];?>" ><?php echo $tipoPersona['description'];?></option>
 
-                                                            <?php //endforeach ;?>
+                                                            <?php endforeach ;?>
                                                             </select>
                                                             <!-- <input type="text" name="barrio" class="form-control" required data-validation-required-message="Digite el barrio"> -->
                                                         </div>
