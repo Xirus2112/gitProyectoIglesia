@@ -9,9 +9,9 @@ $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if(isset($_POST['btn_save']))
-{
-	$stmt = $conn->prepare("INSERT INTO datospersonas( dctoidentidad,nombre,apePaterno,apeMaterno,fNacimiento,correo,telfMovil,telfFijo,ciudad,departamento,calle,carrera,casa,barrio,idTipoPersona,idClasificacionSocial,idEstadoPersona,idGenero) VALUES 
-													 (:dctoidentidad,:nombre,:apePaterno,:apeMaterno,:fNacimiento,:correo,:telfMovil,:telfFijo,:ciudad,:departamento,:calle,:carrera,:casa,:barrio,:idTipoPersona,:idClasificacionSocial,:idEstadoPersona,:idGenero)");
+{	//,idClasificacionSocial,idEstadoPersona,idGenero
+	$stmt = $conn->prepare("INSERT INTO datospersonas( dctoidentidad,nombre,apePaterno,apeMaterno,fNacimiento,correo,telfMovil,telfFijo,ciudad,departamento,calle,carrera,casa,barrio,idTipoPersona) VALUES 
+													 (:dctoidentidad,:nombre,:apePaterno,:apeMaterno,:fNacimiento,:correo,:telfMovil,:telfFijo,:ciudad,:departamento,:calle,:carrera,:casa,:barrio,:idTipoPersona)");//,:idClasificacionSocial,:idEstadoPersona,:idGenero
 	$stmt->bindParam(':dctoidentidad', $_POST['dctoidentidad']);
 	$stmt->bindParam(':nombre', $_POST['nombre']);
 	$stmt->bindParam(':apePaterno', $_POST['apePaterno']);
@@ -27,17 +27,16 @@ if(isset($_POST['btn_save']))
 	$stmt->bindParam(':casa', $_POST['casa']);
 	$stmt->bindParam(':barrio', $_POST['barrio']);
 	$stmt->bindParam(':idtipopersona', $_POST['tipopersona']);
-	$stmt->bindParam(':idClasificacionSocial', $_POST['clasificacionSocial']);
-	$stmt->bindParam(':idEstadoPersona', $_POST['estadoPersona']);
-	$stmt->bindParam(':idGenero', $_POST['genero']);
+	// $stmt->bindParam(':idClasificacionSocial', $_POST['clasificacionSocial']);
+	// $stmt->bindParam(':idEstadoPersona', $_POST['estadoPersona']);
+	// $stmt->bindParam(':idGenero', $_POST['genero']);
 
 
 	// $stmt->bindParam(':short_name', $_POST['short_name']);
 	// $stmt->bindParam(':added_date', date('Y-m-d'));	
 	$stmt->execute();
-
 	$_SESSION['reply'] = "003";
-	header("location:../categories.php");
+	header("location:../customers.php");
 }
 if(isset($_POST['btn_edit']))
 {
