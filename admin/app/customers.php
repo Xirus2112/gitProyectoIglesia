@@ -26,11 +26,12 @@ if(isset($_POST['btn_save']))
 	$stmt->bindParam(':carrera', $_POST['carrera']);
 	$stmt->bindParam(':casa', $_POST['casa']);
 	$stmt->bindParam(':barrio', $_POST['barrio']);
-	$stmt->bindParam(':idtipopersona', $_POST['tipopersona']);
+	$stmt->bindParam(':idtipopersona', $_POST['idtipopersona']);
 	// $stmt->bindParam(':idClasificacionSocial', $_POST['clasificacionSocial']);
 	// $stmt->bindParam(':idEstadoPersona', $_POST['estadoPersona']);
 	// $stmt->bindParam(':idGenero', $_POST['genero']);
 
+//TODO SE SIGUE SIN PODER ENVIAR LOS DATOS OPTION
 
 	// $stmt->bindParam(':short_name', $_POST['short_name']);
 	// $stmt->bindParam(':added_date', date('Y-m-d'));	
