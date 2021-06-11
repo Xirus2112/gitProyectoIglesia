@@ -74,7 +74,7 @@ try
         <div class="agile_info">
             <div class="w3l_form">
                 <div class="left_grid_info">
-                    <h1>Administre su cuenta de <strong>I.A.U.N.J</strong> </h1>
+                    <h1>Miembros de <strong>I.A.U.N.J</strong> </h1>
  
                     <?php if($login_image!=''){ ?>
                         <img src="assets/uploads/settings/<?=$login_image?>" alt="" />
@@ -106,7 +106,7 @@ try
     </div>
     <!-- footer -->
     <div class="footer">
-        <p>&copy; <?php echo date('Y'); ?> Formulario de inicio de sesión empresarial. Todos los derechos Reservados | Diseñado por <b>Carlos A. M.</b></p>
+        <p>&copy; <?php echo date('Y'); ?> Formulario de inicio de sesión empresarial. Todos los derechos Reservados | Creado por <b>Carlos A. M.</b></p>
     </div>
     <!-- footer -->
 </div>
