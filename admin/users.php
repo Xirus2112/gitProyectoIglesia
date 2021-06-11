@@ -35,9 +35,9 @@ $result = $stmt->fetchAll();
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title"><a href="adduser.php" class="btn btn-primary "><i
+                                <h4 class="card-title"><a href="adduser.php" class="btn btn-info "><i
                                             class="la la-plus"></i> Agregar Usuario</a>&nbsp;<a href="roles.php"
-                                        class="btn btn-primary "><i class="la la-eye"></i> Roles</a></h4>
+                                        class="btn btn-info "><i class="la la-eye"></i> Roles</a></h4>
                                 <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
