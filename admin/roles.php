@@ -35,7 +35,7 @@ $result = $stmt->fetchAll();
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">                                    
-                                    <h4 class="card-title"><a href="addrole.php" class="btn btn-primary "><i class="la la-plus"></i> Add New</a></h4>
+                                    <h4 class="card-title"><a href="addrole.php" class="btn btn-info "><i class="la la-plus"></i> Agregar nuevo rol</a></h4>
                                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
@@ -51,7 +51,7 @@ $result = $stmt->fetchAll();
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th>Group Name</th>
+                                                        <th>Nombre Rol</th>
                                                         <th>Control</th>
                                                     </tr>
                                                 </thead>
