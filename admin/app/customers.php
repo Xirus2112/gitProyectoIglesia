@@ -26,7 +26,7 @@ if(isset($_POST['btn_save']))
 	$stmt->bindParam(':carrera', $_POST['carrera']);
 	$stmt->bindParam(':casa', $_POST['casa']);
 	$stmt->bindParam(':barrio', $_POST['barrio']);
-	$stmt->bindParam(':idtipopersona', $_POST['idtipopersona']);
+	$stmt->bindParam(':idTipoPersona', $_POST['idTipoPersona']);
 	// $stmt->bindParam(':idClasificacionSocial', $_POST['clasificacionSocial']);
 	// $stmt->bindParam(':idEstadoPersona', $_POST['estadoPersona']);
 	// $stmt->bindParam(':idGenero', $_POST['genero']);
