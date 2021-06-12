@@ -77,7 +77,7 @@ try
                     <h1>Miembros de <strong>I.A.U.N.J</strong> </h1>
  
                     <?php if($login_image!=''){ ?>
-                        <img src="assets/uploads/settings/<?=$login_image?>" alt="" />
+                        <img  src="assets/uploads/settings/<?=$login_image?>" alt="" />
                     <?php }else{ ?>
                     <img src="assets/images/image.jpg" alt="" />
                     <?php } ?>
