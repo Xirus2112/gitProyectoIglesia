@@ -19,9 +19,9 @@ include('header.php');
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $stmt = $conn->prepare("SELECT dp.id,dp.avatar,dp.nombre,dp.apePaterno,dp.apeMaterno,dp.correo,dp.telfMovil,dp.telfFijo,dp.calle,dp.carrera,dp.casa,dp.departamento AS departamento,dp.ciudad AS municipio,ep.description AS estado,dp.profesion 
-FROM datospersonas dp
-INNER JOIN estatusmembresia ep ON dp.idEstatusmembresia=ep.id
-WHERE delete_status=0");
+                        FROM datospersonas dp
+                        INNER JOIN estatusmembresia ep ON dp.idEstatusmembresia=ep.id
+                        WHERE delete_status=0");
 $stmt->execute();
 $result = $stmt->fetchAll(); 
 //print_r ($result['name']) ;
@@ -147,12 +147,15 @@ $result = $stmt->fetchAll();
                                                     <td><?=$direccion?></td>
                                                     <td><?=$value['departamento']?></td>
                                                     <td><?=$value['profesion']?></td>
-                                                    <td><?php if ($idEstado < '2'):?>
-                                                        <span class="badge bg-success">Activo</span>
+                                                    <td><?php if ($idEstado == '1'):
+                                                        //TODO actualmente no esta funcionando el condicional, y no se el porque, debido a esto se debe seguir revisando
+                                                        ?>
+                                                        
+                                                            <span class="badge bg-success">Activo</span>
                                                         <?php elseif ($idEstado == '2'):?>
-                                                        <span class="badge bg-danger">Inactivo</span>
+                                                            <span class="badge bg-danger">Inactivo</span>
                                                         <?php else :?>
-                                                        <span class="badge bg-warning">En Observación</span>
+                                                            <span class="badge bg-warning">En Observación</span>
                                                         <?php endif;?>
                                                     </td>
                                                     <td>
