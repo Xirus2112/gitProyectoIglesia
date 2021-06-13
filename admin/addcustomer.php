@@ -5,11 +5,7 @@ include('header.php');
 
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$stmt = $conn->prepare("SELECT  * FROM tipopersona");
-$stmt->execute();
-$result = $stmt->fetchAll(); 
 
-//print_r($result['description']);
 ?>
 <!-- BEGIN: Content-->
 <div class="app-content content">
@@ -184,31 +180,85 @@ $result = $stmt->fetchAll();
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-sm-3">
-                                                    <!-- TIPO DE PERSONA -->
+                                            <div class="col-sm-3">
+                                                    <!-- TIPO PERSONA-->
                                                     <div class="form-group">
-                                                        <h5>Tipo de Persona <span class="required">*</span></h5>
+                                                        <h5>Tipo Persona <span class="required">*</span></h5>
                                                         <div class="controls">
                                                             <select name="idTipoPersona" class="form-group">
-                                                                <?php foreach ($result as $value) { ?>
-                                                                <option value="<?=$value['id']?>"><?=$value['description']?>
-                                                                </option>
+                                                                <?php 
+                                                                    // TODO Tabla ClasificacionSocial
+                                                                    $tiporPersonaSql= $conn->prepare("SELECT * FROM tipopersona");
+                                                                    $tiporPersonaSql->execute();
+                                                                    $resultTiporPersona= $tiporPersonaSql->fetchAll();
+                                                                        foreach ($resultTiporPersona as $tiporPersona) { ?>
+                                                                    <option value="<?=$tiporPersona['id']?>"><?=$tiporPersona['description']?></option>
                                                                 <?php } ?>
                                                             </select>
-                                                            <!-- <input type="text" name="barrio" class="form-control" required data-validation-required-message="Digite el barrio"> -->
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- //TODO AQUI VA EL CONTENIDO QUE COPIE EN EN EL ESCRITORIO, LINEAS ABAJO. -->
-                                            </div>
-                                            <!-- Botones -->
-                                            <div class="text-center">
-                                                <button type="submit" name="btn_save" class="btn btn-secondary">Guardar
-                                                    Miembro<i class="fas fa-check ml-1"></i></button>
-                                                <a href="customers.php" class="btn btn-danger">Cancel <i
-                                                        class="la la-close ml-1"></i></a>
+                                                <div class="col-sm-3">
+                                                    <!-- CLASIFICACION SOCIAL-->
+                                                    <div class="form-group">
+                                                        <h5>Clasificación Social <span class="required">*</span></h5>
+                                                        <div class="controls">
+                                                            <select name="idClasificacionSocial" class="form-group">
+                                                                <?php 
+                                                                    // TODO Tabla ClasificacionSocial
+                                                                    $clasificacionSql= $conn->prepare("SELECT * FROM clasificacionsocial");
+                                                                    $clasificacionSql->execute();
+                                                                    $resultClasificacion= $clasificacionSql->fetchAll();
+                                                                        foreach ($resultClasificacion as $clasificacion) { ?>
+                                                                    <option value="<?=$clasificacion['id']?>"><?=$clasificacion['description']?></option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <!-- ESTADO PERSONA-->
+                                                    <div class="form-group">
+                                                        <h5>Estado Persona <span class="required">*</span></h5>
+                                                        <div class="controls">
+                                                            <select name="idEstadoPersona" class="form-group">
+                                                                <?php 
+                                                                    // TODO Tabla ClasificacionSocial
+                                                                    $estadorPersonaSql= $conn->prepare("SELECT * FROM estadopersona");
+                                                                    $estadorPersonaSql->execute();
+                                                                    $resultEstadorPersona= $estadorPersonaSql->fetchAll();
+                                                                        foreach ($resultEstadorPersona as $estadoPersona) { ?>
+                                                                    <option value="<?=$estadoPersona['id']?>"><?=$estadoPersona['descripcion']?></option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <!-- GENERO -->
+                                                    <h5>Genero <span class="required">*</span></h5>
+                                                    <div class="controls">
+                                                            <select name="idGenero" class="form-group">
+                                                                <?php 
+                                                                    // TODO Tabla ClasificacionSocial
+                                                                    $generoSql= $conn->prepare("SELECT * FROM genero");
+                                                                    $generoSql->execute();
+                                                                    $resultGenero= $generoSql->fetchAll();
+                                                                        foreach ($resultGenero as $genero) { ?>
+                                                                    <option value="<?=$genero['id']?>"><?=$genero['description']?></option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                </div>  
                                             </div>
                                         </fieldset>
+                                        <!-- Botones -->
+                                        <div class="text-center">
+                                            <button type="submit" name="btn_save" class="btn btn-success">Guardar<i
+                                                    class="fas fa-check ml-1"></i></button>
+                                            <a href="customers.php" class="btn btn-danger">Cancel <i
+                                                    class="la la-close ml-1"></i></a>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
