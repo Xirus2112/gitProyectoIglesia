@@ -10,8 +10,47 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 if(isset($_POST['btn_save']))
 {	//,idClasificacionSocial,idEstadoPersona,idGenero
-	$stmt = $conn->prepare("INSERT INTO datospersonas( dctoidentidad,nombre,apePaterno,apeMaterno,fNacimiento,correo,telfMovil,telfFijo,ciudad,departamento,calle,carrera,casa,barrio,idTipoPersona) VALUES 
-													 (:dctoidentidad,:nombre,:apePaterno,:apeMaterno,:fNacimiento,:correo,:telfMovil,:telfFijo,:ciudad,:departamento,:calle,:carrera,:casa,:barrio,:idTipoPersona)");//,:idClasificacionSocial,:idEstadoPersona,:idGenero
+	$stmt = $conn->prepare("INSERT INTO datospersonas( 	dctoidentidad,
+														nombre,
+														apePaterno,
+														apeMaterno,
+														fNacimiento,
+														correo,
+														telfMovil,
+														telfFijo,
+														ciudad,
+														departamento,
+														calle,
+														carrera,
+														casa,
+														barrio,
+														idTipoPersona,
+														idClasificacionSocial,
+														idEstadoPersona,
+														idGenero,
+														idEstatusMembresia,
+														delete_status) 
+							VALUES 
+													 (:dctoidentidad,
+													 :nombre,
+													 :apePaterno,
+													 :apeMaterno,
+													 :fNacimiento,
+													 :correo,
+													 :telfMovil,
+													 :telfFijo,
+													 :ciudad,
+													 :departamento,
+													 :calle,
+													 :carrera,
+													 :casa,
+													 :barrio,
+													 :idTipoPersona,
+													 :idClasificacionSocial,
+													 :idEstadoPersona,
+													 :idGenero,
+													 1,
+													 0)");//,,:idEstadoPersona,:idGenero
 	$stmt->bindParam(':dctoidentidad', $_POST['dctoidentidad']);
 	$stmt->bindParam(':nombre', $_POST['nombre']);
 	$stmt->bindParam(':apePaterno', $_POST['apePaterno']);
@@ -27,11 +66,9 @@ if(isset($_POST['btn_save']))
 	$stmt->bindParam(':casa', $_POST['casa']);
 	$stmt->bindParam(':barrio', $_POST['barrio']);
 	$stmt->bindParam(':idTipoPersona', $_POST['idTipoPersona']);
-	// $stmt->bindParam(':idClasificacionSocial', $_POST['clasificacionSocial']);
-	// $stmt->bindParam(':idEstadoPersona', $_POST['estadoPersona']);
-	// $stmt->bindParam(':idGenero', $_POST['genero']);
-
-//TODO SE SIGUE SIN PODER ENVIAR LOS DATOS OPTION
+	$stmt->bindParam(':idClasificacionSocial', $_POST['idClasificacionSocial']);
+	$stmt->bindParam(':idEstadoPersona', $_POST['idEstadoPersona']);
+	$stmt->bindParam(':idGenero', $_POST['idGenero']);
 
 	// $stmt->bindParam(':short_name', $_POST['short_name']);
 	// $stmt->bindParam(':added_date', date('Y-m-d'));	
@@ -51,8 +88,8 @@ if(isset($_POST['btn_edit']))
 }
 if(isset($_GET['id']))
 {
-	//$stmt = $conn->prepare("DELETE FROM medicine_category WHERE id = :id");
-	$stmt = $conn->prepare("UPDATE medicine_category SET delete_status=1 WHERE id=:id");
+	$stmt = $conn->prepare("DELETE FROM datospersonas WHERE id = :id");
+	//$stmt = $conn->prepare("UPDATE medicine_category SET delete_status=1 WHERE id=:id");
 	$stmt->bindParam(':id', $_GET['id']);
 	$stmt->execute();
 }
