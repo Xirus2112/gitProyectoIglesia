@@ -8,49 +8,11 @@ try {
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if(isset($_POST['btn_save']))
-{	//,idClasificacionSocial,idEstadoPersona,idGenero
-	$stmt = $conn->prepare("INSERT INTO datospersonas( 	dctoidentidad,
-														nombre,
-														apePaterno,
-														apeMaterno,
-														fNacimiento,
-														correo,
-														telfMovil,
-														telfFijo,
-														ciudad,
-														departamento,
-														calle,
-														carrera,
-														casa,
-														barrio,
-														idTipoPersona,
-														idClasificacionSocial,
-														idEstadoPersona,
-														idGenero,
-														idEstatusMembresia,
-														delete_status) 
-							VALUES 
-													 (:dctoidentidad,
-													 :nombre,
-													 :apePaterno,
-													 :apeMaterno,
-													 :fNacimiento,
-													 :correo,
-													 :telfMovil,
-													 :telfFijo,
-													 :ciudad,
-													 :departamento,
-													 :calle,
-													 :carrera,
-													 :casa,
-													 :barrio,
-													 :idTipoPersona,
-													 :idClasificacionSocial,
-													 :idEstadoPersona,
-													 :idGenero,
-													 1,
-													 0)");//,,:idEstadoPersona,:idGenero
+if(isset($_POST['btn_save'])){
+$fechaCreacion= date("Y-m-d H:i:s");
+	$stmt = $conn->prepare("INSERT INTO datospersonas(dctoidentidad,nombre,apePaterno,apeMaterno,fNacimiento,correo,telfMovil,telfFijo,ciudad,departamento,calle,carrera,casa,barrio,idTipoPersona,idClasificacionSocial,idEstadoPersona,idGenero,idEstatusMembresia,delete_status,fechaCreacion) 
+							VALUES (:dctoidentidad,:nombre,:apePaterno,:apeMaterno,:fNacimiento,:correo,:telfMovil,:telfFijo,:ciudad,:departamento,:calle,:carrera,:casa,:barrio,:idTipoPersona,:idClasificacionSocial,:idEstadoPersona,:idGenero,1,0,:fechaCreacion)");
+
 	$stmt->bindParam(':dctoidentidad', $_POST['dctoidentidad']);
 	$stmt->bindParam(':nombre', $_POST['nombre']);
 	$stmt->bindParam(':apePaterno', $_POST['apePaterno']);
@@ -69,7 +31,7 @@ if(isset($_POST['btn_save']))
 	$stmt->bindParam(':idClasificacionSocial', $_POST['idClasificacionSocial']);
 	$stmt->bindParam(':idEstadoPersona', $_POST['idEstadoPersona']);
 	$stmt->bindParam(':idGenero', $_POST['idGenero']);
-
+	$stmt->bindParam(':fechaCreacion',date('Y-m-d H:i:s'));
 	// $stmt->bindParam(':short_name', $_POST['short_name']);
 	// $stmt->bindParam(':added_date', date('Y-m-d'));	
 	$stmt->execute();
