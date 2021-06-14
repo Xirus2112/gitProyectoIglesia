@@ -18,10 +18,11 @@ include('header.php');
 
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$stmt = $conn->prepare("SELECT dp.id,dp.avatar,dp.nombre,dp.apePaterno,dp.apeMaterno,dp.correo,dp.telfMovil,dp.telfFijo,dp.calle,dp.carrera,dp.casa,dp.departamento AS departamento,dp.ciudad AS municipio,ep.description AS estado,dp.profesion 
+$stmt = $conn->prepare("SELECT dp.id,dp.avatar,dp.dctoIdentidad,dp.nombre,dp.apePaterno,dp.apeMaterno,dp.correo,dp.telfMovil,dp.telfFijo,dp.calle,dp.carrera,dp.casa,dp.departamento AS departamento,dp.ciudad AS municipio,ep.id AS estatus,ep.description AS estatusMembresia, dp.fechaCreacion 
                         FROM datospersonas dp
                         INNER JOIN estatusmembresia ep ON dp.idEstatusmembresia=ep.id
-                        WHERE delete_status=0");
+                        WHERE delete_status=0
+                        ORDER BY id DESC");
 $stmt->execute();
 $result = $stmt->fetchAll(); 
 //print_r ($result['name']) ;
@@ -107,14 +108,15 @@ $result = $stmt->fetchAll();
                                             <thead>
                                                 <tr>
                                                     <th>Foto</th>
+                                                    <th>Identificador</th>
                                                     <th>Nombre</th>
                                                     <th>Correo</th>
                                                     <th>Tfno Móvil</th>
                                                     <th>Tfno Fijo</th>
                                                     <th>Dirección</th>
                                                     <th>Ciudad</th>
-                                                    <th>Cargo</th>
                                                     <th>Miembro</th>
+                                                    <th>Creado</th>
                                                     <th>Acción</th>
                                                 </tr>
                                             </thead>
@@ -125,7 +127,7 @@ $result = $stmt->fetchAll();
                                                         $avatar=$value['avatar']; 
                                                         $nombreApe= $value['nombre'] . " " . $value['apePaterno'] . " " . $value['apeMaterno'];
                                                         $direccion= "Calle " . $value['calle'] . " #" . $value['carrera'] . " - " . $value['casa'];
-                                                        $idEstado = $value['estado'];
+                                                        $idEstado = $value['estatus'];
                                                         //$estado= $value['estado'];
                                                         ?>
 
@@ -139,25 +141,23 @@ $result = $stmt->fetchAll();
                                                         <?php }else{
                                                                 print ' <img  id="blah" class="rounded-circle mx-auto d-block img-fluid"  src="../assets/uploads/avatar/'.$avatar.'" id="userDropdown" alt="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" width="150px" height="150px">'; }
                                                             ?>
-                                                    </td>
+                                                    </td>                                                    
+                                                    <td><?=$value['dctoIdentidad']?></td>
                                                     <td><?=$nombreApe?></td>
                                                     <td><?=$value['correo']?></td>
                                                     <td><?=$value['telfMovil']?></td>
                                                     <td><?=$value['telfFijo']?></td>
                                                     <td><?=$direccion?></td>
                                                     <td><?=$value['departamento']?></td>
-                                                    <td><?=$value['profesion']?></td>
-                                                    <td><?php if ($idEstado == '1'):
-                                                        //TODO actualmente no esta funcionando el condicional, y no se el porque, debido a esto se debe seguir revisando
-                                                        ?>
-                                                        
+                                                    <td><?php if ($idEstado == '1'):?>                                                        
                                                             <span class="badge bg-success">Activo</span>
                                                         <?php elseif ($idEstado == '2'):?>
                                                             <span class="badge bg-danger">Inactivo</span>
                                                         <?php else :?>
                                                             <span class="badge bg-warning">En Observación</span>
-                                                        <?php endif;?>
+                                                        <?php endif; ?>
                                                     </td>
+                                                    <td><?=$value['fechaCreacion']?></td>
                                                     <td>
                                                         <a title="Editar" href="editcustomer.php?id=<?=$value['id']?>"
                                                             class="btn btn-icon btn-primary mr-1 mb-1"><i
