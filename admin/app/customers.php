@@ -38,9 +38,10 @@ $fechaCreacion= date("Y-m-d H:i:s");
 	$_SESSION['reply'] = "003";
 	header("location:../customers.php");
 }
+//TODO QUEDE POR AQUI AHI QUE CONTINUAR REVISANDO LOS ARCHIVOS PERTINENTES ADDCUSTOMER / EDITCUSTOMER / ./CUSTOMER
 if(isset($_POST['btn_edit']))
 {
-	$stmt = $conn->prepare("UPDATE medicine_category SET name=:name,short_name=:short_name WHERE id=:id");
+	$stmt = $conn->prepare("UPDATE datospersonas SET name=:name,short_name=:short_name WHERE id=:id");
 	$stmt->bindParam(':name', $_POST['name']);
 	$stmt->bindParam(':short_name', $_POST['short_name']);
 	$stmt->bindParam(':id', $_POST['id']);
