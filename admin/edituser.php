@@ -67,7 +67,7 @@ $groups = $stmt->fetchAll();
                                                             <select class="form-group" name="group_id">
                                                                 <?php foreach ($groups as $value) { ?>
                                                                     <option value="<?=$value['id']?>" <?php if($result['group_id']==$value['id']){ echo "selected"; }?>><?=$value['name']?></option>
-                                                               <?php } ?>
+                                                                <?php } ?>
                                                                 
                                                             </select>
                                                         </div>
