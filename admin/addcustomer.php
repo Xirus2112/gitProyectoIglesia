@@ -68,14 +68,15 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                                         <input type="number" name="dctoidentidad" class="form-control"
                                                             title="Cedula" required
                                                             data-validation-required-message="Ingresa el Numero de Cedula"
-                                                            autofocus>
+                                                            placeholder="Digite la Identificación" autofocus>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3 form-group">
                                                     <h5>Nombres <span class="required">*</span></h5>
                                                     <div class="controls">
                                                         <input type="text" name="nombre" class="form-control" required
-                                                            data-validation-required-message="Ingresa el Nombre">
+                                                            data-validation-required-message="Ingresa el Nombre"
+                                                            placeholder="Digite los Nombres">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3 form-group">
@@ -83,7 +84,8 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                                     <div class="controls">
                                                         <input type="text" name="apePaterno" class="form-control"
                                                             required
-                                                            data-validation-required-message="Ingresa tu Apellido Paterno">
+                                                            data-validation-required-message="Ingresa tu Apellido Paterno"
+                                                            placeholder="Digite el Apellido Paterno">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3 form-group">
@@ -91,7 +93,8 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                                     <div class="controls">
                                                         <input type="text" name="apeMaterno" class="form-control"
                                                             required
-                                                            data-validation-required-message="Ingresa tu Apellido Materno">
+                                                            data-validation-required-message="Ingresa tu Apellido Materno"
+                                                            placeholder="Digite el Apellido Materno">
                                                     </div>
                                                 </div>
                                             </div>
@@ -109,7 +112,8 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                                     <h5>Correo<span class="required">*</span></h5>
                                                     <div class="controls">
                                                         <input type="email" name="correo" class="form-control" required
-                                                            data-validation-required-message="Ingresa el correo">
+                                                            data-validation-required-message="Ingresa el correo"
+                                                            placeholder="Digite el Correo" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3 form-group">
@@ -117,7 +121,8 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                                     <div class="controls">
                                                         <input type="number" name="telfMovil" class="form-control"
                                                             required
-                                                            data-validation-required-message="Ingresa Telf Celular">
+                                                            data-validation-required-message="Ingresa Telf Celular"
+                                                            placeholder="Digite el Télefono Celular">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3 form-group">
@@ -125,17 +130,15 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                                     <div class="controls">
                                                         <input type="number" name="telfFijo" class="form-control"
                                                             required
-                                                            data-validation-required-message="Ingresa Telf Fijo">
+                                                            data-validation-required-message="Ingresa Telf Fijo"
+                                                            placeholder="Digite el Télefono Fijo">
                                                     </div>
                                                 </div>
 
                                                 <!-- 
                                                         pattern="[0-9]" -> para solo valores numericos
                                                         pattern="[A-za-z]+" -> para solo valores de texto
-
-
-                                                     -->
-                                                <!-- TEXTAREA DE INF 
+                                                    TEXTAREA DE INF 
                                                         <div class="col form-group">
                                                         <h5>Info <span class="required">*</span></h5>
                                                         <div class="controls">
@@ -148,7 +151,8 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                                     <h5>Ciudad <span class="required">*</span></h5>
                                                     <div class="controls">
                                                         <input type="text" name="ciudad" class="form-control" required
-                                                            data-validation-required-message="Digite la Ciudad">
+                                                            data-validation-required-message="Digite la Ciudad"
+                                                            placeholder="Digite la Ciudad">
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-3 form-group">
@@ -156,15 +160,15 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                                     <div class="controls">
                                                         <input type="text" name="departamento" class="form-control"
                                                             required
-                                                            data-validation-required-message="Digite el Departamento">
+                                                            data-validation-required-message="Digite el Departamento"
+                                                            placeholder="Digite el Departamento">
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-3 form-group">
                                                     <h5>Dirección</h5>
                                                     <div class="controls input-group">
                                                         <input type="text" name="calle" class="form-control "
-                                                            placeholder="Calle" required
-                                                            data-validation-required-message="Digite el Departamento">
+                                                            placeholder="Calle">
                                                         <input type="text" name="carrera" class="form-control "
                                                             placeholder="Carrera">
                                                         <input type="text" name="casa" class="form-control "
@@ -175,85 +179,90 @@ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                                                     <h5>Barrio <span class="required">*</span></h5>
                                                     <div class="controls">
                                                         <input type="text" name="barrio" class="form-control" required
-                                                            data-validation-required-message="Digite el barrio">
+                                                            data-validation-required-message="Digite el barrio"
+                                                            placeholder="Digite el Barrio">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                            <div class="col-sm-3">
+                                                <div class="col-sm-3 form-group">
                                                     <!-- TIPO PERSONA-->
-                                                    <div class="form-group">
-                                                        <h5>Tipo Persona <span class="required">*</span></h5>
-                                                        <div class="controls">
-                                                            <select name="idTipoPersona" class="form-group">
-                                                                <?php 
-                                                                    // TODO Tabla ClasificacionSocial
+                                                    <h5>Tipo Persona <span class="required">*</span></h5>
+                                                    <div class="controls">
+                                                        <select name="idTipoPersona" class="form-group controls">
+                                                            <option>Tipo de Persona</option>
+                                                            <?php 
+                                                                    // TODO Tabla TipoPersona
                                                                     $tiporPersonaSql= $conn->prepare("SELECT * FROM tipopersona");
                                                                     $tiporPersonaSql->execute();
                                                                     $resultTiporPersona= $tiporPersonaSql->fetchAll();
                                                                         foreach ($resultTiporPersona as $tiporPersona) { ?>
-                                                                    <option value="<?=$tiporPersona['id']?>"><?=$tiporPersona['description']?></option>
-                                                                <?php } ?>
-                                                            </select>
-                                                        </div>
+                                                            <option value="<?=$tiporPersona['id']?>">
+                                                                <?=$tiporPersona['description']?></option>
+                                                            <?php } ?>
+                                                        </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-3 form-group">
                                                     <!-- CLASIFICACION SOCIAL-->
-                                                    <div class="form-group">
-                                                        <h5>Clasificación Social <span class="required">*</span></h5>
-                                                        <div class="controls">
-                                                            <select name="idClasificacionSocial" class="form-group">
-                                                                <?php 
+                                                    <h5>Clasificación Social <span class="required">*</span></h5>
+                                                    <div class="controls">
+                                                        <select name="idClasificacionSocial" class="form-group">
+                                                            <option>Clasificación Social</option>
+                                                            <?php 
                                                                     // TODO Tabla ClasificacionSocial
                                                                     $clasificacionSql= $conn->prepare("SELECT * FROM clasificacionsocial");
                                                                     $clasificacionSql->execute();
                                                                     $resultClasificacion= $clasificacionSql->fetchAll();
                                                                         foreach ($resultClasificacion as $clasificacion) { ?>
-                                                                    <option value="<?=$clasificacion['id']?>"><?=$clasificacion['description']?></option>
-                                                                <?php } ?>
-                                                            </select>
-                                                        </div>
+                                                            <option value="<?=$clasificacion['id']?>">
+                                                                <?=$clasificacion['description']?></option>
+                                                            <?php } ?>
+                                                        </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-3">
+                                                <div class="col-sm-3 form-group">
                                                     <!-- ESTADO PERSONA-->
-                                                    <div class="form-group">
-                                                        <h5>Estado Persona <span class="required">*</span></h5>
-                                                        <div class="controls">
-                                                            <select name="idEstadoPersona" class="form-group">
-                                                                <?php 
-                                                                    // TODO Tabla ClasificacionSocial
+                                                    <h5>Estado Persona <span class="required">*</span></h5>
+                                                    <div class="controls">
+                                                        <select name="idEstadoPersona" class="form-group">
+                                                            <option>Estado de la Persona</option>
+                                                            <?php 
+                                                                    // TODO Tabla EstadoPersona
                                                                     $estadorPersonaSql= $conn->prepare("SELECT * FROM estadopersona");
                                                                     $estadorPersonaSql->execute();
                                                                     $resultEstadorPersona= $estadorPersonaSql->fetchAll();
                                                                         foreach ($resultEstadorPersona as $estadoPersona) { ?>
-                                                                    <option value="<?=$estadoPersona['id']?>"><?=$estadoPersona['descripcion']?></option>
+                                                            <option value="<?=$estadoPersona['id']?>">
+                                                                <?=$estadoPersona['descripcion']?></option>
+                                                            <?php } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3 form-group">
+                                                    <!-- GENERO -->
+                                                    <div class="form-group">
+                                                        <h5>Genero <span class="required">*</span></h5>
+                                                        <div class="controls">
+                                                            <select name="idGenero" class="form-group">
+                                                                <option>Género</option>
+                                                                <?php 
+                                                                    // TODO Tabla Genero
+                                                                    $generoSql= $conn->prepare("SELECT * FROM genero");
+                                                                    $generoSql->execute();
+                                                                    $resultGenero= $generoSql->fetchAll();
+                                                                        foreach ($resultGenero as $genero) { ?>
+                                                                <option value="<?=$genero['id']?>">
+                                                                    <?=$genero['description']?></option>
                                                                 <?php } ?>
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-sm-3">
-                                                    <!-- GENERO -->
-                                                    <h5>Genero <span class="required">*</span></h5>
-                                                    <div class="controls">
-                                                            <select name="idGenero" class="form-group">
-                                                                <?php 
-                                                                    // TODO Tabla ClasificacionSocial
-                                                                    $generoSql= $conn->prepare("SELECT * FROM genero");
-                                                                    $generoSql->execute();
-                                                                    $resultGenero= $generoSql->fetchAll();
-                                                                        foreach ($resultGenero as $genero) { ?>
-                                                                    <option value="<?=$genero['id']?>"><?=$genero['description']?></option>
-                                                                <?php } ?>
-                                                            </select>
-                                                        </div>
-                                                </div>  
                                             </div>
                                         </fieldset>
                                         <!-- Botones -->
-                                        <div class="text-center">
+                                        <div class="text-center ">
                                             <button type="submit" name="btn_save" class="btn btn-success">Guardar<i
                                                     class="fas fa-check ml-1"></i></button>
                                             <a href="customers.php" class="btn btn-danger">Cancel <i
