@@ -19,7 +19,7 @@ USE `administradoriglesia`;
 
 -- Volcando estructura para tabla administradoriglesia.clasificacionsocial
 CREATE TABLE IF NOT EXISTS `clasificacionsocial` (
-  `id` int(4) NOT NULL,
+  `id` int(50) NOT NULL,
   `description` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -32,28 +32,59 @@ INSERT INTO `clasificacionsocial` (`id`, `description`) VALUES
 	(3, 'Clase Baja');
 /*!40000 ALTER TABLE `clasificacionsocial` ENABLE KEYS */;
 
+-- Volcando estructura para tabla administradoriglesia.datoseclesiasticos
+CREATE TABLE IF NOT EXISTS `datoseclesiasticos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idEstatusMembresia` int(50) DEFAULT NULL,
+  `miembroDesde` date DEFAULT NULL,
+  `fconversion` date DEFAULT NULL,
+  `bautizado` bit(1) DEFAULT NULL,
+  `nombreIglesiaAnterior` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idEstatusMembresia` (`idEstatusMembresia`),
+  CONSTRAINT `FK1decle_statusMen` FOREIGN KEY (`idEstatusMembresia`) REFERENCES `estatusmembresia` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Volcando datos para la tabla administradoriglesia.datoseclesiasticos: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `datoseclesiasticos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `datoseclesiasticos` ENABLE KEYS */;
+
+-- Volcando estructura para tabla administradoriglesia.datosgenerales
+CREATE TABLE IF NOT EXISTS `datosgenerales` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fNacimiento` date DEFAULT NULL,
+  `lugarNacimiento` varchar(50) DEFAULT NULL,
+  `nacionalidad` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Volcando datos para la tabla administradoriglesia.datosgenerales: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `datosgenerales` DISABLE KEYS */;
+/*!40000 ALTER TABLE `datosgenerales` ENABLE KEYS */;
+
 -- Volcando estructura para tabla administradoriglesia.datospersonas
 CREATE TABLE IF NOT EXISTS `datospersonas` (
-  `id` int(5) NOT NULL,
+  `id` int(5) NOT NULL AUTO_INCREMENT,
   `dctoIdentidad` int(10) DEFAULT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `apePaterno` varchar(50) NOT NULL,
+  `nombre` varchar(50) DEFAULT NULL,
+  `apePaterno` varchar(50) DEFAULT NULL,
   `apeMaterno` varchar(50) DEFAULT NULL,
-  `correo` varchar(150) NOT NULL,
-  `telfMovil` varchar(10) NOT NULL,
+  `correo` varchar(150) DEFAULT NULL,
+  `telfMovil` varchar(10) DEFAULT NULL,
   `telfFijo` varchar(10) DEFAULT NULL,
   `calle` varchar(4) DEFAULT NULL,
   `carrera` varchar(4) DEFAULT NULL,
   `casa` varchar(4) DEFAULT NULL,
   `ciudad` varchar(15) DEFAULT NULL,
   `departamento` varchar(15) DEFAULT NULL,
+  `barrio` char(50) DEFAULT NULL,
   `codPostal` varchar(5) DEFAULT NULL,
   `fNacimiento` date DEFAULT NULL,
-  `idTipoPersona` int(4) NOT NULL,
-  `idClasificacionSocial` int(4) NOT NULL,
-  `idEstadoPersona` int(4) NOT NULL,
-  `idGenero` int(4) NOT NULL,
-  `idEstatusMembresia` int(4) NOT NULL,
+  `idTipoPersona` varchar(50) NOT NULL DEFAULT '',
+  `idClasificacionSocial` varchar(50) NOT NULL DEFAULT '',
+  `idEstadoPersona` int(4) DEFAULT NULL,
+  `idGenero` int(4) DEFAULT NULL,
+  `idEstatusMembresia` int(4) DEFAULT NULL,
   `fIngresoIglesia` date DEFAULT NULL,
   `fConversion` date DEFAULT NULL,
   `nombreIglesiaConversion` varchar(50) DEFAULT NULL,
@@ -64,23 +95,24 @@ CREATE TABLE IF NOT EXISTS `datospersonas` (
   `telfTrabajo` varchar(10) DEFAULT NULL,
   `avatar` varchar(255) DEFAULT NULL,
   `delete_status` bit(1) DEFAULT NULL,
+  `fechaCreacion` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FKdp_tipoPersona` (`idTipoPersona`),
-  KEY `FKdp_clasificacionSocial` (`idClasificacionSocial`),
   KEY `FKdp_estadoPersona` (`idEstadoPersona`),
   KEY `FKdp_genero` (`idGenero`),
   KEY `FKdp_estatusMembresia` (`idEstatusMembresia`),
-  CONSTRAINT `FKdp_clasificacionSocial` FOREIGN KEY (`idClasificacionSocial`) REFERENCES `clasificacionsocial` (`id`),
   CONSTRAINT `FKdp_estadoPersona` FOREIGN KEY (`idEstadoPersona`) REFERENCES `estadopersona` (`id`),
   CONSTRAINT `FKdp_estatusMembresia` FOREIGN KEY (`idEstatusMembresia`) REFERENCES `estatusmembresia` (`id`),
-  CONSTRAINT `FKdp_genero` FOREIGN KEY (`idGenero`) REFERENCES `genero` (`id`),
-  CONSTRAINT `FKdp_tipoPersona` FOREIGN KEY (`idTipoPersona`) REFERENCES `tipopersona` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  CONSTRAINT `FKdp_genero` FOREIGN KEY (`idGenero`) REFERENCES `genero` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COMMENT='dctoidentidad,nombre,apePaterno,apeMaterno,fNacimiento,correo,telfMovil,telfFijo,ciudad,departamento,calle,carrera,casa,barrio,idTipoPersona,idClasificacionSocial,idEstadoPersona,idGenero';
 
--- Volcando datos para la tabla administradoriglesia.datospersonas: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla administradoriglesia.datospersonas: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `datospersonas` DISABLE KEYS */;
-INSERT INTO `datospersonas` (`id`, `dctoIdentidad`, `nombre`, `apePaterno`, `apeMaterno`, `correo`, `telfMovil`, `telfFijo`, `calle`, `carrera`, `casa`, `ciudad`, `departamento`, `codPostal`, `fNacimiento`, `idTipoPersona`, `idClasificacionSocial`, `idEstadoPersona`, `idGenero`, `idEstatusMembresia`, `fIngresoIglesia`, `fConversion`, `nombreIglesiaConversion`, `esBautizado`, `nombreIglesiaAnterior`, `profesion`, `direccionTrabajo`, `telfTrabajo`, `avatar`, `delete_status`) VALUES
-	(1, 1143426188, 'Carlos', 'Alvarado', 'Martinez', 'carlosalvarado1901@gmail.com', '3017453145', '3194406', '21', '14', '41', 'Barranquilla', 'Atlantico', '80001', '1990-09-26', 3, 2, 4, 0, 3, '2021-05-28', '2021-05-28', 'Pentecostal', b'1', 'No recuerda', 'Ing. Sistemas', 'Sin trabajo', NULL, '17304.png', b'0');
+INSERT INTO `datospersonas` (`id`, `dctoIdentidad`, `nombre`, `apePaterno`, `apeMaterno`, `correo`, `telfMovil`, `telfFijo`, `calle`, `carrera`, `casa`, `ciudad`, `departamento`, `barrio`, `codPostal`, `fNacimiento`, `idTipoPersona`, `idClasificacionSocial`, `idEstadoPersona`, `idGenero`, `idEstatusMembresia`, `fIngresoIglesia`, `fConversion`, `nombreIglesiaConversion`, `esBautizado`, `nombreIglesiaAnterior`, `profesion`, `direccionTrabajo`, `telfTrabajo`, `avatar`, `delete_status`, `fechaCreacion`) VALUES
+	(2, 1143426188, 'Carlos', 'Alvarado', 'Martinez', 'carlos@carlos.com', '3017453145', '3194406', '14', '21', '41', 'Barranquilla', 'Atlantico', 'Las Nieves', NULL, '1990-09-26', '1', '1', 1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, b'0', '2021-06-14 12:04:50'),
+	(17, 1128127641, 'Madeleine', 'Alvarado', 'De La Hoz', 'made@made.com', '3234', '234324', '21', '14', '41', 'Barranquilla', 'Atlantico', 'Las Nieves', NULL, '2021-06-14', '1', '1', 1, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, b'0', '2021-06-14 12:04:52'),
+	(21, 1022326, 'Jeremy', 'Alvarado', 'De La Hoz', 'made@made.com', '3017453145', '3194406', '14', '21', '41', 'Barranquilla', 'Atlantico', 'Las Nieves', NULL, '2021-06-14', '3', '2', 1, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, b'0', '2021-06-14 12:04:53'),
+	(22, 1231, 'Mary', 'dasd', 'dasd', 'athiasalvarado@gmail.com', '2312', '213213', '21', '14', '41', 'Barranquilla', 'Atlantico', 'Las Nieves', NULL, '2021-06-14', '1', '1', 1, 0, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, b'0', '2021-06-14 12:32:15'),
+	(23, 132132, 'dadasd', 'sadsad', 'adasdas', 'carlosalvarado1901@gmail.com', '3342343', '234234', '21', '14', '41', 'Barranquilla', 'Atlantico', 'Las Nieves', NULL, NULL, '2', '1', 1, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, b'0', '2021-06-14 14:34:37');
 /*!40000 ALTER TABLE `datospersonas` ENABLE KEYS */;
 
 -- Volcando estructura para tabla administradoriglesia.estadopersona
@@ -146,9 +178,9 @@ CREATE TABLE IF NOT EXISTS `groups` (
 /*!40000 ALTER TABLE `groups` DISABLE KEYS */;
 INSERT INTO `groups` (`id`, `name`, `description`, `created_at`, `delete_status`, `delete_date`) VALUES
 	(1, 'admin', 'admin', '2017-06-06 06:23:04', 0, NULL),
-	(2, 'role 1', 'role 1', '2019-04-08 05:51:05', 0, NULL),
-	(3, 'role2', 'role2', '2019-04-08 05:52:00', 0, NULL),
-	(4, 'role 3', 'role 3', '2019-04-08 05:54:18', 0, NULL);
+	(2, 'Administrador', 'Rol de administrador Rol 1', '2019-04-08 05:51:05', 0, NULL),
+	(3, 'Administrador 1', 'Administrador rol 2', '2019-04-08 05:52:00', 0, NULL),
+	(4, 'Administrador 2', 'Administrador role 2', '2019-04-08 05:54:18', 0, NULL);
 /*!40000 ALTER TABLE `groups` ENABLE KEYS */;
 
 -- Volcando estructura para tabla administradoriglesia.modal
@@ -197,7 +229,7 @@ CREATE TABLE IF NOT EXISTS `permission_role` (
   `permission_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla administradoriglesia.permission_role: ~15 rows (aproximadamente)
 /*!40000 ALTER TABLE `permission_role` DISABLE KEYS */;
@@ -211,12 +243,12 @@ INSERT INTO `permission_role` (`id`, `permission_id`, `role_id`) VALUES
 	(9, 7, 1),
 	(10, 8, 1),
 	(11, 9, 1),
-	(16, 6, 3),
-	(17, 7, 3),
-	(18, 3, 4),
-	(19, 4, 4),
-	(20, 8, 4),
-	(21, 9, 2);
+	(22, 9, 2),
+	(25, 6, 3),
+	(26, 7, 3),
+	(27, 3, 4),
+	(28, 4, 4),
+	(29, 8, 4);
 /*!40000 ALTER TABLE `permission_role` ENABLE KEYS */;
 
 -- Volcando estructura para tabla administradoriglesia.settings
@@ -234,7 +266,7 @@ CREATE TABLE IF NOT EXISTS `settings` (
 -- Volcando datos para la tabla administradoriglesia.settings: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
 INSERT INTO `settings` (`id`, `fevicon`, `logo`, `title`, `login_image`, `footer`, `currency`) VALUES
-	(1, 'fevicon.png', 'logo_iaunj.png', 'Iglesia IAUNJ', 'login_image-324.png', 'Footer', 'Rs.');
+	(1, 'fevicon.png', 'logo_iaunj.png', 'Iglesia IAUNJ', 'logo_iaunj.png', 'Footer', 'Rs.');
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 
 -- Volcando estructura para tabla administradoriglesia.tbl_admin
@@ -248,7 +280,7 @@ CREATE TABLE IF NOT EXISTS `tbl_admin` (
   `delete_status` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla administradoriglesia.tbl_admin: 2 rows
 /*!40000 ALTER TABLE `tbl_admin` DISABLE KEYS */;
