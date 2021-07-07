@@ -12,7 +12,7 @@ try
         $footer=$result['footer'];
         $fevicon=$result['fevicon'];
         $login_image=$result['login_image'];
-                          
+          //prueba                
     }catch(PDOException $e)
     {
     echo "Connection failed: " . $e->getMessage();
