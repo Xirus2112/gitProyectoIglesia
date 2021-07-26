@@ -12,9 +12,9 @@ $stmt = $conn->prepare("SELECT * FROM datospersonas WHERE id='".$_GET['id']."'")
 $stmt->execute();
 $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-$stmt = $conn->prepare("SELECT * FROM groups WHERE name != 'admin'");
-$stmt->execute();
-$groups = $stmt->fetchAll();
+// $stmt = $conn->prepare("SELECT * FROM groups WHERE name != 'admin'");
+// $stmt->execute();
+// $groups = $stmt->fetchAll();
 
 ?>
     <!-- BEGIN: Content-->
@@ -199,10 +199,10 @@ $groups = $stmt->fetchAll();
                                                     <h5>Tipo Persona <span class="required">*</span></h5>
                                                     <div class="controls">
                                                         <select name="idTipoPersona" class="form-group controls">
-                                                            <option>Tipo de Persona</option>                                                            
+                                                            <!-- <option>Tipo de Persona</option>                                                             -->
                                                             <?php 
                                                                     // TODO Tabla TipoPersona
-                                                                    $tiporPersonaSql= $conn->prepare("SELECT * FROM tipopersona");
+                                                                    $tiporPersonaSql= $conn->prepare("");
                                                                     $tiporPersonaSql->execute();
                                                                     $resultTiporPersona= $tiporPersonaSql->fetchAll();
                                                                         foreach ($resultTiporPersona as $tiporPersona) { ?>
@@ -216,10 +216,10 @@ $groups = $stmt->fetchAll();
                                                     <h5>Clasificación Social <span class="required">*</span></h5>
                                                     <div class="controls">
                                                         <select name="idClasificacionSocial" class="form-group">
-                                                            <option>Clasificación Social</option>
+                                                            <!-- <option>Clasificación Social</option> -->
                                                             <?php 
                                                                     // TODO Tabla ClasificacionSocial
-                                                                    $clasificacionSql= $conn->prepare("SELECT * FROM clasificacionsocial");
+                                                                    $clasificacionSql= $conn->prepare("");
                                                                     $clasificacionSql->execute();
                                                                     $resultClasificacion= $clasificacionSql->fetchAll();
                                                                         foreach ($resultClasificacion as $clasificacion) { ?>
@@ -234,10 +234,10 @@ $groups = $stmt->fetchAll();
                                                     <h5>Estado Persona <span class="required">*</span></h5>
                                                     <div class="controls">
                                                         <select name="idEstadoPersona" class="form-group">
-                                                            <option>Estado de la Persona</option>
+                                                            <!-- <option>Estado de la Persona</option> -->
                                                             <?php 
                                                                     // TODO Tabla EstadoPersona
-                                                                    $estadorPersonaSql= $conn->prepare("SELECT * FROM estadopersona");
+                                                                    $estadorPersonaSql= $conn->prepare("");
                                                                     $estadorPersonaSql->execute();
                                                                     $resultEstadorPersona= $estadorPersonaSql->fetchAll();
                                                                         foreach ($resultEstadorPersona as $estadoPersona) { ?>
@@ -253,15 +253,14 @@ $groups = $stmt->fetchAll();
                                                         <h5>Genero <span class="required">*</span></h5>
                                                         <div class="controls">
                                                             <select name="idGenero" class="form-group">
-                                                                <option>Género</option>
+                                                                <!-- <option>Género</option> -->
                                                                 <?php 
                                                                     // TODO Tabla Genero
                                                                     $generoSql= $conn->prepare("SELECT * FROM genero");
                                                                     $generoSql->execute();
                                                                     $resultGenero= $generoSql->fetchAll();
                                                                         foreach ($resultGenero as $genero) { ?>
-                                                                <option value="<?=$genero['id']?>">
-                                                                    <?=$genero['description']?></option>
+                                                                <option value="<?=$genero['id']?>"><?=$genero['description']?></option>
                                                                 <?php } ?>
                                                             </select>
                                                         </div>
