@@ -112,7 +112,6 @@ $result = $stmt->fetchAll();
                                                     <th>Nombre</th>
                                                     <th>Correo</th>
                                                     <th>Tfno Móvil</th>
-                                                    <th>Tfno Fijo</th>
                                                     <th>Dirección</th>
                                                     <th>Ciudad</th>
                                                     <th>Miembro</th>
@@ -146,7 +145,6 @@ $result = $stmt->fetchAll();
                                                     <td><?=$nombreApe?></td>
                                                     <td><?=$value['correo']?></td>
                                                     <td><?=$value['telfMovil']?></td>
-                                                    <td><?=$value['telfFijo']?></td>
                                                     <td><?=$direccion?></td>
                                                     <td><?=$value['departamento']?></td>
                                                     <td><?php if ($idEstado == '1'):?>                                                        
