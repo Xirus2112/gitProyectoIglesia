@@ -20,13 +20,13 @@ $groups = $stmt->fetchAll();
         <div class="content-wrapper">
             <div class="content-header row mb-1">
                 <div class="content-header-left col-md-6 col-12 mb-2">
-                    <h3 class="content-header-title">Add User</h3>
+                    <h3 class="content-header-title">Agregar Usuario</h3>
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.php">Home</a>
+                                <li class="breadcrumb-item"><a href="index.php">Inicio</a>
                                 </li>
-                                <li class="breadcrumb-item active">Add User
+                                <li class="breadcrumb-item active">Agregar Usuario
                                 </li>
                             </ol>
                         </div>
@@ -62,19 +62,24 @@ $groups = $stmt->fetchAll();
                                                 </div>
                                                 <div class="col-lg-6 col-md-12">
                                                     <div class="form-group">
-                                                        <h5>Group <span class="required">*</span></h5>
+                                                        <h5>Grupo <span class="required">*</span></h5>
                                                         <div class="controls">
                                                             <select class="form-group" name="group_id">
                                                                 <?php foreach ($groups as $value) { ?>
-                                                                    <option value="<?=$value['id']?>" <?php if($result['group_id']==$value['id']){ echo "selected"; }?>><?=$value['name']?></option>
-                                                                <?php } ?>
-                                                                
+                                                                    <option value="<?=$value['id']?>" 
+                                                                        <?php 
+                                                                            if($result['group_id']==$value['id']){ 
+                                                                                echo "selected"; 
+                                                                            }?>>
+                                                                        <?=$value['name']?>
+                                                                    </option>
+                                                                <?php } ?>                                                                
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="text-right">
-                                                        <button type="submit" name="btn_edit" class="btn btn-success">Submit <i class="la la-thumbs-o-up position-right"></i></button>
-                                                        <a href="users.php" class="btn btn-danger">Cancel <i class="la la-close position-right"></i></a>
+                                                        <button type="submit" name="btn_edit" class="btn btn-success">Guardar <i class="la la-thumbs-o-up position-right"></i></button>
+                                                        <a href="users.php" class="btn btn-danger">Cancelar <i class="la la-close position-right"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
