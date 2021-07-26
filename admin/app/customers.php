@@ -59,15 +59,12 @@ if(isset($_GET['id']))
 
 
 					  
-}catch(PDOException $e)
-{
-echo "Connection failed: " . $e->getMessage();
+}catch(PDOException $e){
+	echo "Connection failed: " . $e->getMessage();
 }
 
 }else{
 
-header("location:../");
+	header("location:../");
 
 }
-
-?>

@@ -145,7 +145,7 @@ $result = $stmt->fetchAll();
                                                     <td><?=$nombreApe?></td>
                                                     <td><?=$value['correo']?></td>
                                                     <td><?=$value['telfMovil']?></td>
-                                                    <td><?=$direccion?></td>
+                                                    <!-- <td><?=$direccion?></td> -->
                                                     <td><?=$value['departamento']?></td>
                                                     <td><?php if ($idEstado == '1'):?>                                                        
                                                             <span class="badge bg-success">Activo</span>
@@ -157,13 +157,8 @@ $result = $stmt->fetchAll();
                                                     </td>
                                                     <td><?=$value['fechaCreacion']?></td>
                                                     <td>
-                                                        <a title="Editar" href="editcustomer.php?id=<?=$value['id']?>"
-                                                            class="btn btn-icon btn-primary mr-1 mb-1"><i
-                                                                class="la la-edit"></i></a>
-                                                        <button type="button"
-                                                            class="btn btn-icon btn-danger mr-1 mb-1 cancel-button"
-                                                            id="<?=$value['id']?>" title="Eliminar"><i
-                                                                class="la la-trash"></i></button>
+                                                        <a title="Editar" href="editcustomer.php?id=<?=$value['id']?>" class="btn btn-icon btn-primary mr-1 mb-1"><i class="la la-edit"></i></a>
+                                                        <button type="button" class="btn btn-icon btn-danger mr-1 mb-1 cancel-button" id="<?=$value['id']?>" title="Eliminar"><i class="la la-trash"></i></button>
                                                     </td>
                                                 </tr>
                                                 <?php $i++; } ?>
